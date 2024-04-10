@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="HMS.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="navbar-left">
+                <img class="logo" src="HMS.png" alt="Logo">
+            </div>
+            <div class="navbar-middle">
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </div>
+            <div class="navbar-right">
+                <button class="button">Sign Up</button>
+            </div>
+        </div>
+
+        
+        <div class="video-container">
+            <video autoplay loop muted>
+                <source src="assets/Sneak peak.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="content">
+                <h1>Ranked NO. 1 by KHS</h1>
+                <p>Best hostel service available | Sign Up Today!</p>
+            </div>
+    
+            <form class="search-form">
+                <div class="search-bar">
+                    <input type="text" name="hostel-search" placeholder="Enter name" required>
+                </div>
+                
+                <div class="options">
+                    <input type="date" name="check-in-date" required>
+                    <select name="room-type" required>
+                        <option value="Select Type">Select Type</option>
+                        <option value="dorm">Dorm Type</option>
+                        <option value="private">Private Room</option>
+                    </select>
+                    <input type="number" name="guests" placeholder="Guests" required>
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+
+        <!-- <div class="header">
+            <h1>The only hostel website you will ever need.</h1>
+            <div class="panels">
+                <div class="panel">
+                    <i class="fa-solid fa-code-compare"></i>
+                    <h3>Compare prices with 1 click</h3>
+                    <p>Compare prices from all major hostel booking websites with 1 simple click</p>
+                </div>
+                <div class="panel">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <h3>Genuine uncensored reviews you can trust</h3>
+                    <p>Non-biased reviews from real guests, readers and experts</p>
+                </div>
+                <div class="panel">
+                    <i class="fa-solid fa-globe"></i>
+                    <h3>Find every single hostel in the world</h3>
+                    <p>We are the only database in the world listing every single hostel worldwide</p>
+                </div>
+            </div>
+            <h4>Save money and time.
+                We compare all hostel prices for you.
+                </h4>
+        </div>
+
+
+        <div class="slideshow-container">
+            <h1>Explore the world Featured Cities.</h1>
+            <div class="slideshow">
+                <div class="slide">
+                    <img src="assets/img1.jpg" alt="Image 1">
+                    <h2>Bihar</h2>
+                </div>
+                <div class="slide">
+                    <img src="assets/img2.jpg" alt="Image 2">
+                    <h2> Delhi</h2>
+                </div>
+                <div class="slide">
+                    <img src="assets/img3.jpg" alt="Image 3">
+                    <h2>Kota</h2>
+                </div>
+                <div class="slide">
+                    <img src="assets/img4.jpg" alt="Image 4">
+                    <h2>Allahabad</h2>
+                </div>
+                <div class="slide">
+                    <img src="assets/img5.jpg" alt="Image 5">
+                    <h2>Varanasi</h2>
+                </div>
+                <div class="slide">
+                    <img src="assets/img6.jpg" alt="Image 5">
+                    <h2>Banglore</h2>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="Hostel-section">
+            <div class="box1 box">
+                <div class="Hostel">
+                    <div class="box-img" style="background-image: url('assets/img7.jpg');"></div>
+                    <h2>14 Cheapest Places to stay in NEW DELHI(Hostels and Hotels with Prices)</h2>
+                    <h4>You are looking for a more affordable solution to stay in Amsterdam? You are in luck: We have put together the 14 …</h4>
+                    <button>Know More About This</button>
+                </div>
+            </div>
+            <div class="box2 box">
+                <div class="Hostel">
+                    <div class="box-img" style="background-image: url('assets/img8.jpg');"></div>
+                    <h2>5 Family-Friendly Hostels in Ahmedabad: An Insider's Guide</h2>
+                    <h4>Ahmedabad, a city known for its rich history, captivating sights, and impressive culture, also has some top-notch hostels for …</h4>
+                    <button>Know More About This</button>
+                </div>
+            </div>
+            <div class="box3 box">
+                <div class="Hostel">
+                    <div class="box-img" style="background-image: url('assets/img9.jpg');"></div>
+                    <h2>10 Youth Hostels in Rome.Discover Affordable Youth Hostels in Rome</h2>
+                    <h4>Looking for affordable yet cozy accommodations in the Eternal City? Check out our guide to the best youth hostels in Rome! …</h4>
+                    <button>Know More About This</button>
+                </div>
+            </div>
+
+            <div id="myDiv">
+                <h1>A Great Choices Of Hostels. Where You Want To Stay. </h1>
+                
+                <div class="pannel-container">
+                  <div class="pannel">
+                      <img src="assets/img10.jpg" alt="Image 1">
+                      <h2>Joey's Hostel  New Delhi.</h2>
+                      <p>Well set in the New Friends Colony district of New Delhi, The Hosteller Delhi is located 4.9 km from Humayun's Tomb, 7 km from India Gate and 7.1 km from Pragati Maidan.</p>
+                      <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <span class="rating-number">4.0</span>
+                        <span class="star">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                      </div>
+                      <button>Book Hostel</button>
+                  </div>
+
+                  <div class="pannel">
+                    <img src="assets/img11.jpg " alt="Image 1">
+                    <h2>Joey's Hostel Noida.</h2>
+                    <p>Well set in the New Friends Colony district of New Delhi, The Hosteller Delhi is located 4.9 km from Humayun's Tomb, 7 km from India Gate and 7.1 km from Pragati Maidan.</p>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <span class="rating-number">4.2</span>
+                      <span class="star">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                    </div>
+                    <button>Book Hostel</button>
+                </div>
+
+                <div class="pannel">
+                    <img src="assets/img12.jpg " alt="Image 1">
+                    <h2>Moustache Hostel, Jaipur.</h2>
+                    <p>At The Moustache, Jaipur  rooftop terrace offers a seating area and aa view of the Nahargarh Fort.The hostel is at 1 km from Jaipur Railway Station.Jaipur International Airport is at 11 km away.</p>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <span class="rating-number">4.5</span>
+                      <span class="star">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                    </div>
+                    <button>Book Hostel </button>
+                </div>
+
+                <div class="pannel">
+                    <img src="assets/img13.jpg" alt="Image 1">
+                    <h2>FabHotel Patna</h2>
+                    <p>ASet 9.4 km from Phaphamau Junction, FabHotel Cosmos in Allahābād provides rooms with air conditioning and free WiFi. The acomodation offers room service and a 24-hour service . Free WiFi is avail.</p>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <span class="rating-number">4.6</span>
+                      <span class="star">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                    </div>
+                    <button>Book Hostel</button>
+                </div>
+                </div>
+            </div>
+
+
+            <div id="myyDiv">
+                <div class="pannel-container">
+                  <div class="pannel">
+                      <img src="assets/img14.jpg" alt="Image 1">
+                      <h2>The Imperial Bodhgaya.</h2>
+                      <p>Situated in Bodh Gaya, 11 km from Mahabodhi Temple, The Imperial Bodhgaya features accommodation with a fitness centre, free private parking, a garden and a shared lounge. The property has a snack bar, as well as a restaurant serving Chinese cuisine.The accommodation provides a 24-hour front desk. </p>
+                      <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <span class="rating-number">4.1</span>
+                        <span class="star">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                      </div>
+                      <button>Book Hostel</button>
+                  </div>
+
+                  <div class="pannel">
+                    <img src="assets/img15.jpg " alt="Image 1">
+                    <h2>Royal Nest .</h2>
+                    <p>Situated in Pune, Royal Nest Premium offers accommodation with a terrace or a balcony, free WiFi and flat-screen TV,.Aga Khan Palace is 8.8 km from Royal Nest, while Darshan Museum is 11 km from the property. The nearest airport is Pune International Airport, 10 km from the bed and breakfast.</p>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <span class="rating-number">4.8</span>
+                      <span class="star">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                    </div>
+                    <button>Book Hostel</button>
+                </div>
+
+                <div class="pannel">
+                    <img src="assets/img16.jpg " alt="Image 1">
+                    <h2>Home Tales 2 ,Banglore</h2>
+                    <p>Home Tales 2 by Tipiverse is set in the Koramangala district of Bangalore, 1.2km from Forum Mall, Koramangala and 5.3km from Brigade Road. Free WiFi is featuredthroughout the hostel.Chinnaswamy Stadium is 6.5 km from the apartment International Airport, 38 km from Home Tales 2 by Tipiverse.</p>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <span class="rating-number">4.4</span>
+                      <span class="star">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                    </div>
+                    <button>Book Hostel </button>
+                </div>
+
+                <div class="pannel">
+                    <img src="assets/img17.jpg" alt="Image 1">
+                    <h2>Nalanda Tulip</h2>
+                    <p>Located near Ballygunge, Dhakuria, Nalanda Tulip features a terrace and views of the city. Private parking is available on site.The homestay also offers car hire. The nearest airport is Netaji Subhash Chandra Bose International Airport, 17 km from the property.There is free shuttle service at the property.</p>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <span class="rating-number">4.0</span>
+                      <span class="star">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                    </div>
+                    <button>Book Hostel</button>
+                </div>
+                </div>
+            </div>
+
+            <div class="background-div">
+                <div class="container">
+                    <h1>Unlock your Hostel Account to Freedom!</h1>
+                    <h2>Sign up with Hostelz.com and get access to exclusive hostel content and much more.</h2>
+                    <input type="text" placeholder="What is your best email.....">
+                    <button>SignUp</button>
+                    <h2>Do you already have an account? <a href="#" class="login-link">Login</a></h2>
+                </div>
+            </div>
+    </header>
+
+    <footer>
+        <div class="foot-panel1">
+            Back to Top
+        </div>
+
+        <div class="footer-panel2">
+            <ul>
+               <p>HOW TO...</p> 
+               <a>book hostels</a>
+               <a>pack your backpack</a>
+               <a>stay safe in hostels</a>
+            </ul>
+            <ul>
+                <p>EXPLORE</p> 
+                <a>All Hostels</a>
+                <a>How Hostelz works</a>
+                <a>Help</a>  
+                <a>Sign up</a>             
+             </ul>
+             <ul>
+                <p>BRAND NEW FOR YOU</p> 
+                <a>Comparizon Tool</a>
+                <a>Best Hostel Guides</a>
+                <a>Hostels with Private Rooms</a>
+                <a>Party Hostels</a>
+                <a>Cheapest Hostels</a>            
+             </ul>
+        </div>
+    </footer> -->
+</body>
+</html>
