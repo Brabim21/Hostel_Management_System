@@ -18,13 +18,15 @@
     <form id="login-form">
 
       <p id="email-id">Email or username</p>
-      <input type="text" id="username" name="username" placeholder="Enter your username">
+      <input type="text" id="username" name="username" placeholder="Enter your username" pattern="^[a-zA-Z0-9._%+-]+@gmail.com$">
 
       <p id="pass-id">Enter password</p>
-      <input type="password" id="password" name="password" placeholder="Enter your Password">
+      <input type="password" id="password" name="password" placeholder="Enter your Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one uppercase letter, one digit, and be at least 8 characters long." required>
 
       <input type="checkbox" id="showPasswordCheckbox">
       <label for="showPasswordCheckbox">Show Password</label>
+
+      <a href="forgot_password.html">Forgot Password?</a>
 
       <button type="submit" id="sign-in">Sign in</button>
 
@@ -59,9 +61,8 @@
           console.log("Response from login.php:", xhr.responseText); // Log the response
           // Check if the response exactly matches "success"
           if (xhr.responseText.trim() === "success") {
-            // If login is successfuls, redirect to home.php
+            // If login is successful, redirect to home.php
             console.log("Redirecting to home.php");
-            //  use window location
             window.location.href = "home.php";
           } else {
             console.log("Login failed:", xhr.responseText);
@@ -73,3 +74,4 @@
   </script>
 </body>
 </html>
+
