@@ -59,8 +59,9 @@
           console.log("Response from login.php:", xhr.responseText); // Log the response
           // Check if the response exactly matches "success"
           if (xhr.responseText.trim() === "success") {
-            // If login is successful, redirect to home.php
+            // If login is successfuls, redirect to home.php
             console.log("Redirecting to home.php");
+            //  use window location
             window.location.href = "home.php";
           } else {
             console.log("Login failed:", xhr.responseText);
