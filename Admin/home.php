@@ -44,7 +44,7 @@
       </section>
     </main>
     <footer>
-      <p>&copy; 2024 Admin Dashboard</p>
+      <p>&copy; 2024 HostelStays</p>
     </footer>
   </div>
 </body>
