@@ -46,66 +46,73 @@ if(isset($_POST['update'])) {
   <title>Password Recovery</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f5f5f5;
-    }
-    .modal {
-      display: block;
-      background: rgba(0, 0, 0, 0.5);
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 9999;
-    }
-    .modal-dialog {
-      margin: 50px auto;
-      max-width: 400px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 5px;
-    }
-    .modal-title {
-      font-size: 24px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .form-control {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-    .btn {
-      width: 100%;
-      padding: 10px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background-color: #0056b3;
-    }
-    .text-center {
-      text-align: center;
-    }
-    .gray-text {
-      color: #666;
-    }
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 24px;
-      color: #aaa;
-      cursor: pointer;
-    }
+        body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+  }
+  .modal {
+    display: block;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    overflow-y: auto; /* Added overflow-y for scrolling if needed */
+  }
+  .modal-dialog {
+    margin: 50px auto;
+    max-width: 400px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Added box-shadow for a subtle effect */
+  }
+  .modal-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out; /* Added transition for input focus effect */
+  }
+  .form-control:focus {
+    border-color: #007bff; /* Updated focus border color */
+  }
+  .btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out; /* Added transition for button hover effect */
+  }
+  .btn:hover {
+    background-color: #0056b3; /* Updated hover background color */
+  }
+  .text-center {
+    text-align: center;
+  }
+  .gray-text {
+    color: #666;
+  }
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+  }
   </style>
 </head>
 <body>
