@@ -17,58 +17,87 @@
     <!-- Form tag added here -->
     <form id="login-form">
 
-      <p id="email-id">Email or username</p>
-      <input type="text" id="username" name="username" placeholder="Enter your username">
+  <p id="email-id">Email or username</p>
+  <input type="text" id="username" name="username" placeholder="Enter your username" pattern="^[a-zA-Z0-9._%+-]+@gmail.com$">
 
-      <p id="pass-id">Enter password</p>
-      <input type="password" id="password" name="password" placeholder="Enter your Password">
+  <p id="pass-id">Enter password</p>
+  <input type="password" id="password" name="password" placeholder="Enter your Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one uppercase letter, one digit, and be at least 8 characters long." required>
 
-      <input type="checkbox" id="showPasswordCheckbox">
-      <label for="showPasswordCheckbox">Show Password</label>
+  <input type="checkbox" id="showPasswordCheckbox">
+  <label for="showPasswordCheckbox">Show Password</label>
 
-      <button type="submit" id="sign-in">Sign in</button>
+  <a href="./forgotpassword.php" id="forgot-password">Forgot Password?</a>
 
-    </form>
+  <button type="submit" id="sign-in">Sign in</button>
+
+</form>
     <!-- End of form -->
 
   </div>
 
   <!-- Script tag moved to the end of the body -->
   <script>
-    document.getElementById("showPasswordCheckbox").addEventListener("change", function() {
-      var passwordField = document.getElementById("password");
-      if (this.checked) {
+document.getElementById("showPasswordCheckbox").addEventListener("change", function() {
+    var passwordField = document.getElementById("password");
+    if (this.checked) {
         passwordField.type = "text";
-      } else {
+    } else {
         passwordField.type = "password";
-      }
-    });
+    }
+});
 
-    document.getElementById("login-form").addEventListener("submit", function(event) {
-      event.preventDefault(); // Prevent the default form submission
+document.getElementById("login-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the default form submission
 
-      let username = document.getElementById("username").value;
-      let password = document.getElementById("password").value;
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
 
-      // Send AJAX request to login.php
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "../login.php", true);
-      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          console.log("Response from login.php:", xhr.responseText); // Log the response
-          // Check if the response exactly matches "success"
-          if (xhr.responseText.trim() === "success") {
-            // If login is successful, redirect to home.php
-            console.log("Redirecting to home.php");
-            window.location.href = "home.php";
-          } else {
-            console.log("Login failed:", xhr.responseText);
-          }
+    // Check for presence of username and password fields
+    if (username.trim() === "" || password.trim() === "") {
+        alert("Please enter both username and password.");
+        return;
+    }
+
+    // Enforce password regulations
+    let passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(password)) {
+        alert("Password must be at least 8 characters long and contain at least one uppercase letter and one digit.");
+        return;
+    }
+
+    // Specify username criteria (e.g., requiring "@gmail.com" for email-based usernames)
+    if (username.trim().toLowerCase().indexOf("@gmail.com") === -1) {
+        alert("Username must be an email address with '@gmail.com'.");
+        return;
+    }
+
+    // Send AJAX request to login.php
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../login.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                console.log("Response from login.php:", xhr.responseText); // Log the response
+                // Check if the response exactly matches "success"
+                if (xhr.responseText.trim() === "success") {
+                    // If login is successful, redirect to home.php
+                    console.log("Redirecting to home.php");
+                    window.location.href = "home.php";
+                } else {
+                    console.log("Login failed:", xhr.responseText);
+                    alert("Incorrect username or password. Please try again.");
+                }
+            } else {
+                console.log("Error:", xhr.statusText);
+                alert("Error occurred while logging in. Please try again later.");
+            }
         }
-      };
-      xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
-    });
-  </script>
+    };
+    xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
+});
+
+</script>
 </body>
 </html>
+
