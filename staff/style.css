@@ -1,74 +1,119 @@
-* {
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
-
-body {
-    background-color: #f5f5f5;
-}
-
-.container {
-    background-color: #fff;
-    padding: 20px;
-    margin: 50px auto;
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-text {
-    font-size: 24px;
-    font-weight: 600;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.line {
-    height: 1px;
-    background-color: #ccc;
-    margin-bottom: 20px;
-}
-
-#email-id, #pass-id {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: none;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
+nav {
+    background-color: #333;
     color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
-
-button:hover {
-    background-color: #0056b3;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
 }
-
-button:focus {
-    outline: none;
+nav ul li {
+    margin-bottom: 10px;
 }
-
-#showPasswordCheckbox{
-
-    margin-bottom: 20px;
+nav ul li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+nav ul li a:hover {
+    background-color: #555;
+}
+nav ul li a:hover .logo {
+    transform: scale(1.1); /* Example hover effect */
+}
+.logo {
+    width: 100px; /* Adjust as needed */
+    margin-bottom: 20px; /* Spacing between logo and links */
+    transition: transform 0.3s; /* Transition effect */
+}
+.content {
+    margin-left: 220px; /* Adjust based on nav width */
+    padding: 20px;
+    text-align: center;
+}
+.admin-profile {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    text-align: center;
+    color: #333;
+}
+.admin-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.info-box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.info-box {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s; /* Transition effect */
+}
+.info-box img {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.info-box:hover {
+    transform: scale(1.1); /* Example hover effect */
+}
+.graph-box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.graph-box {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    width: 450px; /* Adjusted width */
+    height: 300px; /* Adjusted height */
+    transition: transform 0.3s; /* Transition effect */
+}
+.graph-box:hover {
+    transform: scale(1.1); /* Example hover effect */
+}
+.graph-box h2 {
+    margin-top: 0;
+}
+.graph-box img {
+    max-width: 400px; /* Adjusted width */
+    max-height: 250px; /* Adjusted height */
+    border-radius: 10px;
+    margin-top: 10px;
 }
