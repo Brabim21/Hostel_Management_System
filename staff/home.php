@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hostel Management System - Staff Page</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
     <nav>
@@ -29,25 +28,25 @@
         <div class="info-box-container">
             <div class="info-box">
                 <h2>Total Residents</h2>
-                <p>Residents Count: 80</p>
+                <p id="residentCount">Residents Count: 80</p>
                 <img src="Residents.jpg" alt="Resident Image">
             </div>
 
             <div class="info-box">
                 <h2>Maintenance</h2>
-                <p>Maintenance Count: 12</p>
+                <p id="maintenanceCount">Maintenance Count: 12</p>
                 <img src="Maintenance.png" alt="Bed Image">
             </div>
 
             <div class="info-box">
                 <h2>Total Events</h2>
-                <p>Events Count: 4</p>
+                <p id="eventCount">Events Count: 4</p>
                 <img src="Icon.png" alt="Resident Image">
             </div>
 
             <div class="info-box">
                 <h2>Total Tasks</h2>
-                <p>Task count: 20</p>
+                <p id="taskCount">Task count: 20</p>
                 <img src="Task.png" alt="Billing Image">
             </div>
         </div>
@@ -65,5 +64,22 @@
         <img src="Staff.jpg" alt="Staff Profile">
         <p>STAFF</p>
     </div>
+
+    <script>
+        // Example JavaScript functionality to update counts dynamically
+        const residentCountElement = document.getElementById('residentCount');
+        const maintenanceCountElement = document.getElementById('maintenanceCount');
+        const eventCountElement = document.getElementById('eventCount');
+        const taskCountElement = document.getElementById('taskCount');
+
+        // Simulate data update
+        setInterval(() => {
+            // Update counts randomly (for demonstration purposes)
+            residentCountElement.textContent = `Residents Count: ${Math.floor(Math.random() * 100)}`;
+            maintenanceCountElement.textContent = `Maintenance Count: ${Math.floor(Math.random() * 20)}`;
+            eventCountElement.textContent = `Events Count: ${Math.floor(Math.random() * 10)}`;
+            taskCountElement.textContent = `Task count: ${Math.floor(Math.random() * 30)}`;
+        }, 5000); // Update every 5 seconds (adjust as needed)
+    </script>
 </body>
 </html>
