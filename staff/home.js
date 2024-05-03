@@ -1,6 +1,6 @@
 // Function to update statistics from the backend
 function updateStatisticsFromBackend() {
-    fetch('https://your-backend-api.com/statistics')
+    fetch('http://localhost/home.php') // Replace 'get_statistics.php' with your actual PHP script filename
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -8,7 +8,7 @@ function updateStatisticsFromBackend() {
             return response.json();
         })
         .then(data => {
-            // Assuming your backend returns an object with keys for each statistic
+            // Assuming your PHP script returns an object with keys for each statistic
             let residentCount = data.residentCount;
             let maintenanceCount = data.maintenanceCount;
             let eventCount = data.eventCount;
