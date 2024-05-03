@@ -12,7 +12,9 @@ if (isset($_GET['staffId'])) {
 
     // Execute the query
     if (mysqli_query($link, $sql)) {
-        echo "Staff member deleted successfully.";
+        // Redirect back to the manageStaff.php page after deleting
+        header("Location: manageStaff.php");
+        exit();
     } else {
         echo "Error deleting staff member: " . mysqli_error($link);
     }
