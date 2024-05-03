@@ -1,4 +1,35 @@
-<!DOCTYPE html>
+<?php
+// Database connection configuration
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "hostel_management_system";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// SQL query to fetch statistics data
+$sql = "SELECT residentCount, maintenanceCount, eventCount, taskCount FROM statistics_table";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Fetch data and format as JSON
+    $row = $result->fetch_assoc();
+    echo json_encode($row);
+} else {
+    echo "No data found";
+}
+
+$conn->close();
+?>
+
+
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,25 +59,25 @@
         <div class="info-box-container">
             <div class="info-box">
                 <h2>Total Residents</h2>
-                <p id="residentCount">Residents Count: 80</p>
+                <p id="residentCount">Residents Count</p>
                 <img src="Residents.jpg" alt="Resident Image">
             </div>
 
             <div class="info-box">
                 <h2>Maintenance</h2>
-                <p id="maintenanceCount">Maintenance Count: 12</p>
+                <p id="maintenanceCount">Maintenance Count</p>
                 <img src="Maintenance.png" alt="Bed Image">
             </div>
 
             <div class="info-box">
                 <h2>Total Events</h2>
-                <p id="eventCount">Events Count: 4</p>
+                <p id="eventCount">Events Count</p>
                 <img src="Icon.png" alt="Resident Image">
             </div>
 
             <div class="info-box">
                 <h2>Total Tasks</h2>
-                <p id="taskCount">Task count: 20</p>
+                <p id="taskCount">Task count</p>
                 <img src="Task.png" alt="Billing Image">
             </div>
         </div>
@@ -65,21 +96,7 @@
         <p>STAFF</p>
     </div>
 
-    <script>
-        // Example JavaScript functionality to update counts dynamically
-        const residentCountElement = document.getElementById('residentCount');
-        const maintenanceCountElement = document.getElementById('maintenanceCount');
-        const eventCountElement = document.getElementById('eventCount');
-        const taskCountElement = document.getElementById('taskCount');
 
-        // Simulate data update
-        setInterval(() => {
-            // Update counts randomly (for demonstration purposes)
-            residentCountElement.textContent = `Residents Count: ${Math.floor(Math.random() * 100)}`;
-            maintenanceCountElement.textContent = `Maintenance Count: ${Math.floor(Math.random() * 20)}`;
-            eventCountElement.textContent = `Events Count: ${Math.floor(Math.random() * 10)}`;
-            taskCountElement.textContent = `Task count: ${Math.floor(Math.random() * 30)}`;
-        }, 5000); // Update every 5 seconds (adjust as needed)
-    </script>
+    <script src="home.js"></script>
 </body>
 </html>
