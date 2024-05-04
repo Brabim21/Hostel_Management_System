@@ -20,7 +20,7 @@
             <li><a href="managestaff.php">Staff</a></li>
             <li><a href="#">Residents</a></li>
             <li><a href="#">Billing Details</a></li>
-            <li><a href="#">Payment Info</a></li>
+            <li><a href="manage_payment.php">Payment Info</a></li>
             <li><a href="#">Logout</a></li>
         </ul>
     </nav>
@@ -52,6 +52,8 @@
                         echo "<td>" . (isset($row['residents_count']) ? $row['residents_count'] : 'N/A') . "</td>";
                         echo "<td>";
                         echo "<button onclick='openEditOverlay(" . $row['room_id'] . ", \"" . $row['room_name'] . "\", " . $row['room_price'] . ", \"" . $row['facility'] . "\", " . (isset($row['residents_count']) ? $row['residents_count'] : 'N/A') . ")'>Update</button>";
+
+
 
                         echo "<button onclick='confirmDelete(" . $row['room_id'] . ")' class='delete-button'>Delete</button>";
                         echo "</td>";
@@ -140,8 +142,9 @@
     document.getElementById('residentCount').value = residentCount;
 
     // Display the overlay
-    document.getElementById('editOverlay').style.display = 'block';
+    document.getElementById('editOverlay').style.display = 'block'; 
 }
+
 
     function confirmDelete(roomId) {
         document.getElementById('deleteModal').style.display = 'block';

@@ -20,7 +20,7 @@
             <li><a href="managestaff.php">Staff</a></li>
             <li><a href="#">Residents</a></li>
             <li><a href="#">Billing Details</a></li>
-            <li><a href="#">Payment Info</a></li>
+            <li><a href="manage_payment.php">Payment Info</a></li>
             <li><a href="#">Logout</a></li>
         </ul>
     </nav>

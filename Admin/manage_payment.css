@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+}
+
+nav ul li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+nav ul li a:hover .logo {
+    transform: scale(1.1); /* Example hover effect */
+}
+
+.logo {
+    width: 100px; /* Adjust as needed */
+    margin-bottom: 20px; /* Spacing between logo and links */
+    transition: transform 0.3s; /* Transition effect */
+}
+
+.container {
+    margin-left: 220px; /* Adjust based on nav width */
+    padding: 20px;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+#paymentTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#paymentTable th, #paymentTable td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#paymentTable th {
+    background-color: #f2f2f2;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.pagination button:hover {
+    background-color: #555;
+}
+
+.pagination button:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
