@@ -113,9 +113,9 @@
         }
         .calendar-cell {
             border: 1px solid #ccc;
-            padding: 50px; /* Increased padding */
+            padding: 20px; /* Adjusted padding */
             text-align: center;
-            font-size: 1.5em; /* Increased font size */
+            font-size: 1em; /* Adjusted font size */
             position: relative; /* Added */
         }
         .calendar-cell.highlight {
@@ -135,24 +135,21 @@
             font-size: 1.5em; /* Adjust font size */
             margin-bottom: 20px; /* Add spacing between month-year and calendar */
         }
+        .button {
+            background-color: #ccc; /* Grey color */
+            color: #000; /* Black text */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .button:hover {
+            background-color: #bbb; /* Darker grey on hover */
+        }
     </style>
 </head>
 <body>
-    <div class="event-calendar">
-        <div class="event">
-            <h3>Hostel Movie Night</h3>
-            <p>Date: May 20, 2024</p>
-            <p>Time: 7:00 PM - 9:00 PM</p>
-            <p>Description: Join us for a movie night in the hostel lounge. Popcorn and drinks will be provided!</p>
-        </div>
-        <div class="event">
-            <h3>Hostel BBQ Party</h3>
-            <p>Date: May 5, 2024</p>
-            <p>Time: 6:00 PM - 10:00 PM</p>
-            <p>Description: Don't miss our annual BBQ party at the hostel backyard. Bring your appetite!</p>
-        </div>
-        <!-- Add more events as needed -->
-    </div>
     <nav>
         <ul>
             <li>
@@ -169,54 +166,103 @@
         </ul>
     </nav>
     <div class="content">
-        <div class="calendar">
-            <div class="calendar-month-year">Calendar - May, 2024</div> <!-- Added text "Calendar" -->
-            <div class="calendar-header">
-                <div>Sun</div>
-                <div>Mon</div>
-                <div>Tue</div>
-                <div>Wed</div>
-                <div>Thu</div>
-                <div>Fri</div>
-                <div>Sat</div>
+        <div class="event-calendar">
+            <div class="event">
+                <h3>Hostel Movie Night</h3>
+                <p>Date: May 20, 2024</p>
+                <p>Time: 7:00 PM - 9:00 PM</p>
+                <p>Description: Join us for a movie night in the hostel lounge. Popcorn and drinks will be provided!</p>
             </div>
-            <div class="calendar-body">
-                <div class="calendar-cell"></div>
-                <div class="calendar-cell"></div>
-                <div class="calendar-cell"></div>
-                <div class="calendar-cell">1</div>
-                <div class="calendar-cell">2</div>
-                <div class="calendar-cell">3</div>
-                <div class="calendar-cell">4</div>
-                <div class="calendar-cell highlight">5</div> <!-- Added class for highlighting -->
-                <div class="calendar-cell">6</div>
-                <div class="calendar-cell">7</div>
-                <div class="calendar-cell">8</div>
-                <div class="calendar-cell">9</div>
-                <div class="calendar-cell">10</div>
-                <div class="calendar-cell">11</div>
-                <div class="calendar-cell">12</div>
-                <div class="calendar-cell">13</div>
-                <div class="calendar-cell">14</div>
-                <div class="calendar-cell">15</div>
-                <div class="calendar-cell">16</div>
-                <div class="calendar-cell">17</div>
-                <div class="calendar-cell">18</div>
-                <div class="calendar-cell">19</div>
-                <div class="calendar-cell highlight">20</div> <!-- Added class for highlighting -->
-                <div class="calendar-cell">21</div>
-                <div class="calendar-cell">22</div>
-                <div class="calendar-cell">23</div>
-                <div class="calendar-cell">24</div>
-                <div class="calendar-cell">25</div>
-                <div class="calendar-cell">26</div>
-                <div class="calendar-cell">27</div>
-                <div class="calendar-cell">28</div>
-                <div class="calendar-cell">29</div>
-                <div class="calendar-cell">30</div>
+            <div class="event">
+                <h3>Hostel BBQ Party</h3>
+                <p>Date: May 5, 2024</p>
+                <p>Time: 6:00 PM - 10:00 PM</p>
+                <p>Description: Don't miss our annual BBQ party at the hostel backyard. Bring your appetite!</p>
             </div>
+            <!-- Add more events as needed -->
         </div>
+        <div class="calendar">
+            <div class="calendar-month-year">Calendar - <span id="current-month"></span></div>
+            <div class="calendar-header">
+                <button onclick="previousMonth()">&#10094;</button>
+                <span id="current-month"></span>
+                <button onclick="nextMonth()">&#10095;</button>
+            </div>
+            <div class="calendar-body" id="calendar-body"></div>
+        </div>
+        <button class="button" onclick="openAddEventForm()">Add Event</button>
+        <button class="button" onclick="deleteEvent()">Delete Event</button>
     </div>
-    
+
+    <script>
+        const currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+
+        function renderCalendar() {
+            const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
+            const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0);
+            const daysInMonth = lastDayOfMonth.getDate();
+            const startingDay = firstDayOfMonth.getDay();
+
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            document.getElementById("current-month").textContent = monthNames[currentMonth] + " " + currentYear;
+
+            const calendarBody = document.getElementById("calendar-body");
+            calendarBody.innerHTML = "";
+
+            // Create blank spaces for days before the first day of the month
+            for (let i = 0; i < startingDay; i++) {
+                const day = document.createElement("div");
+                day.classList.add("calendar-cell");
+                calendarBody.appendChild(day);
+            }
+
+            // Create days of the month
+            for (let i = 1; i <= daysInMonth; i++) {
+                const day = document.createElement("div");
+                day.classList.add("calendar-cell");
+                day.textContent = i;
+                if (currentMonth === currentDate.getMonth() && currentYear === currentDate.getFullYear() && i === currentDate.getDate()) {
+                    day.classList.add("today");
+                }
+                calendarBody.appendChild(day);
+            }
+        }
+
+        function nextMonth() {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar();
+        }
+
+        function previousMonth() {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar();
+        }
+
+        function openAddEventForm() {
+            // Your logic to open the add event form goes here
+            alert("Add Event Form will be opened.");
+        }
+
+        function deleteEvent() {
+            // Your logic to delete an event goes here
+            alert("Event will be deleted.");
+        }
+
+        renderCalendar();
+    </script>
 </body>
 </html>
+
