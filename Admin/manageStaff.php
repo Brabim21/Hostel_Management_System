@@ -19,7 +19,7 @@
                     Dashboard
                 </a>
             </li>
-            <li><a href="#">Rooms</a></li>
+            <li><a href="manage_room.php">Rooms</a></li>
             <li><a href="managestaff.php">Staff</a></li>
             <li><a href="#">Residents</a></li>
             <li><a href="#">Billing Details</a></li>
