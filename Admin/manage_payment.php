@@ -31,6 +31,13 @@ if ($link) {
     $totalResult = mysqli_query($link, $totalSql);
     $totalRows = mysqli_fetch_assoc($totalResult)['total'];
     $totalPages = ceil($totalRows / $limit);
+
+    // Calculate total received amount
+    $totalReceivedAmount = 0;
+    $receivedAmountSql = "SELECT SUM(received_amount) AS total_received 
+                          FROM billing";
+    $receivedAmountResult = mysqli_query($link, $receivedAmountSql);
+    $totalReceivedAmount = mysqli_fetch_assoc($receivedAmountResult)['total_received'];
 } else {
     echo "Error: Unable to establish database connection.";
 }
@@ -72,7 +79,7 @@ mysqli_close($link);
             <li><a href="#">Residents</a></li>
             <li><a href="#">Billing Details</a></li>
             <li><a href="#">Payment Info</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="#" id = "logout">Logout</a></li>
         </ul>
     </nav>
 
@@ -109,6 +116,12 @@ mysqli_close($link);
                 }
                 ?>
             </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3">Total Received Amount:</th>
+                    <td>$<?php echo $totalReceivedAmount; ?></td>
+                </tr>
+            </tfoot>
         </table>
         <div class="pagination">
             <a href="?page=<?php echo ($page > 1) ? ($page - 1) : 1; ?>&search=<?php echo $search; ?>" id="prevBtn">Prev</a>
@@ -119,5 +132,22 @@ mysqli_close($link);
         <input type="hidden" name="payment_id[]" />
         <input type="hidden" name="new_status[]" />
     </form>
+
+    <script>
+    // Add event listener to the logout link
+    document.getElementById('logout').addEventListener('click', function() {
+        // Show a confirmation dialog
+        if (confirm('Are you sure you want to logout?')) {
+            // If user clicks OK, redirect to adminLogin.php
+            window.location.href = 'adminLogin.php';
+        } else {
+            // If user clicks Cancel, do nothing
+            return false;
+        }
+    });
+</script>
+
+
+    
 </body>
 </html>

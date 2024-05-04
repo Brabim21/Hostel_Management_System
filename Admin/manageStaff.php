@@ -160,6 +160,18 @@
             function closeModal(modalId) {
                 document.getElementById(modalId).style.display = 'none';
             }
+
+                // Add event listener to the logout link
+    document.getElementById('logout').addEventListener('click', function() {
+        // Show a confirmation dialog
+        if (confirm('Are you sure you want to logout?')) {
+            // If user clicks OK, redirect to adminLogin.php
+            window.location.href = 'adminLogin.php';
+        } else {
+            // If user clicks Cancel, do nothing
+            return false;
+        }
+    });
         </script>
 
         <!-- Add Staff Form -->

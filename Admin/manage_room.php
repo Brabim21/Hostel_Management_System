@@ -21,7 +21,7 @@
             <li><a href="#">Residents</a></li>
             <li><a href="#">Billing Details</a></li>
             <li><a href="manage_payment.php">Payment Info</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="#" id = "logout">Logout</a></li>
         </ul>
     </nav>
 
@@ -164,6 +164,19 @@
     function closeOverlay(overlayId) {
         document.getElementById(overlayId).style.display = 'none';
     }
+
+        // Add event listener to the logout link
+        document.getElementById('logout').addEventListener('click', function() {
+        // Show a confirmation dialog
+        if (confirm('Are you sure you want to logout?')) {
+            // If user clicks OK, redirect to adminLogin.php
+            window.location.href = 'adminLogin.php';
+        } else {
+            // If user clicks Cancel, do nothing
+            return false;
+        }
+    });
+
 </script>
 
 

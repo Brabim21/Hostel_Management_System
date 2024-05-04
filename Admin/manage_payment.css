@@ -67,7 +67,8 @@ nav ul li a:hover .logo {
     border-collapse: collapse;
 }
 
-#paymentTable th, #paymentTable td {
+#paymentTable th,
+#paymentTable td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
@@ -75,6 +76,39 @@ nav ul li a:hover .logo {
 
 #paymentTable th {
     background-color: #f2f2f2;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.received-amount {
+    color: green;
+}
+
+.pending-amount {
+    color: red;
+}
+
+.total-row {
+    background-color: #ffc107;
+    color: blue; /* Change the color of the total amount here */
 }
 
 .pagination {
