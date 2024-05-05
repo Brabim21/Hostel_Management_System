@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+}
+
+nav ul li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+nav ul li a:hover .logo {
+    transform: scale(1.1);
+}
+
+.logo {
+    width: 100px;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.content {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.search-box {
+    margin-bottom: 10px;
+}
+
+#billingTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#billingTable th, #billingTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#billingTable th {
+    background-color: #f2f2f2;
+}
+
+#billingTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#billingTable tr:hover {
+    background-color: #ddd;
+}
+
+.resident-details {
+    margin-top: 20px;
+}
+
+.resident-details form {
+    margin-bottom: 20px;
+}
+
+.resident-details h3 {
+    margin-bottom: 10px;
+}
