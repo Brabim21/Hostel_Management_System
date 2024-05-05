@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hostel Management System - Staff Page</title>
-    <link rel="stylesheet" href="ResidentLogin.css">
-
+    <title>Hostel Management System - Resident Page</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
@@ -16,54 +15,62 @@
                     Dashboard
                 </a>
             </li>
-            <li><a href="#">Resident Info</a></li>
-            <li><a href="#">Rooms</a></li>
-            <li><a href="#">Tasks</a></li>
-            <li><a href="#">Event Calendar</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Book Facilities</a></li>
+            <li><a href="#">My Payments</a></li>
+            <li><a href="#">Maintenance Requests</a></li>
+            <li><a href="#">Notifications</a></li>
+            <li><a href="#">Chats</a></li>
             <li><a href="#">Logout</a></li>
         </ul>
     </nav>
     <div class="content">
-        <p>Welcome Staff!</p>
+        <p>Welcome Resident!</p>
         
         <div class="info-box-container">
             <div class="info-box">
-                <h2>Total Residents</h2>
-                <p>Residents Count: 80</p>
-                <img src="Residents.jpg" alt="Resident Image">
+                <h2>Booking Status</h2>
+                <p>You have no current bookings.</p>
+                <img src="Icon.png" alt="Booking Status">
             </div>
 
             <div class="info-box">
-                <h2>Maintenance</h2>
-                <p>Maintenance Count: 12</p>
-                <img src="Maintenance.png" alt="Bed Image">
+                <h2>Payment Due</h2>
+                <p>No payments due at the moment.</p>
+                <img src="Payment.png" alt="Payment Due">
             </div>
 
             <div class="info-box">
-                <h2>Total Events</h2>
-                <p>Events Count: 4</p>
-                <img src="Icon.png" alt="Resident Image">
-            </div>
-
-            <div class="info-box">
-                <h2>Total Tasks</h2>
-                <p>Task count: 20</p>
-                <img src="Task.png" alt="Billing Image">
+                <h2>Notification</h2>
+                <p>No new notifications.</p>
+                <img src="Notification.jpg" alt="Notifications">
             </div>
         </div>
 
-        <div class="graph-box-container">
-            <div class="graph-box">
-                <h2>Resident Status</h2>
-                <img src="GraphStaff.png" alt="Residents Status">
+        <div class="task-box-container">
+            <div class="task-box">
+                <h2>Tasks</h2>
+                <p>You have no tasks assigned.</p>
+                <img src="Task.png" alt="Tasks">
             </div>
         </div>
-    
+
+        <div class="separator-bar"></div> <!-- Separating bar -->
+
+        <div class="reservation-details">
+            <h2>Ongoing Reservation</h2>
+            <p>Room Number: 305</p>
+            <p>Reservation Period: April 25, 2024 - April 28, 2024</p>
+            <p>Room Type: Single Room</p>
+            <p>Room Cleaning: Not Yet Cleaned</p>
+            <button>Cancel Reservation</button>
+        </div>
+
         <!-- Your content goes here -->
     </div>
-    <div class="admin-profile">
-        <img src="Staff.jpg" alt="Staff Profile">
-        <p>STAFF</p>
+    <div class="resident-profile">
+        <img src="Residents.jpg" alt="Resident Profile">
+        <p>RESIDENT</p>
     </div>
 </body>
 </html>
