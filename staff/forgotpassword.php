@@ -5,6 +5,10 @@ define("DB_USERNAME", "root");
 define("DB_PASSWORD", "");
 define("DB_NAME", "hostel_management_system");
 
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 try {
     // Create a PDO instance
     $dbh = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
@@ -15,28 +19,39 @@ try {
 }
 
 // Handle form submission
-if(isset($_POST['update'])) {
-    $email = $_POST['email'];
+if (isset($_POST['update'])) {
+    $email = trim($_POST['email']); // Trim leading/trailing spaces
     $newpassword = $_POST['newpassword'];
+    $confirmpassword = $_POST['confirmpassword'];
 
-    $sql = "SELECT email FROM admin WHERE email=:email";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':email', $email, PDO::PARAM_STR);
-    $query->execute();
-    $results = $query->fetchAll(PDO::FETCH_OBJ);
+    // Check if new password and confirm password match
+    if ($newpassword === $confirmpassword) {
+        // Make the email comparison case-insensitive
+        $sql = "SELECT email FROM admin WHERE LOWER(email)=LOWER(:email)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':email', $email, PDO::PARAM_STR);
+        $query->execute();
+        $results = $query->fetchAll(PDO::FETCH_OBJ);
 
-    if($query->rowCount() > 0) {
-        $con = "UPDATE admin SET password=:newpassword WHERE email=:email";
-        $chngpwd1 = $dbh->prepare($con);
-        $chngpwd1->bindParam(':email', $email, PDO::PARAM_STR);
-        $chngpwd1->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-        $chngpwd1->execute();
-        echo "<script>alert('Your Password successfully changed');</script>";
+        if ($query->rowCount() > 0) {
+            // Hash the new password for security
+            $hashedPassword = password_hash($newpassword, PASSWORD_DEFAULT);
+
+            $con = "UPDATE admin SET password=:newpassword WHERE LOWER(email)=LOWER(:email)";
+            $chngpwd1 = $dbh->prepare($con);
+            $chngpwd1->bindParam(':email', $email, PDO::PARAM_STR);
+            $chngpwd1->bindParam(':newpassword', $hashedPassword, PDO::PARAM_STR);
+            $chngpwd1->execute();
+            echo "<script>alert('Your Password successfully changed');</script>";
+        } else {
+            echo "<script>alert('Email id is invalid');</script>";
+        }
     } else {
-        echo "<script>alert('Email id is invalid');</script>"; 
+        echo "<script>alert('New Password and Confirm Password do not match');</script>";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -131,7 +146,7 @@ if(isset($_POST['update'])) {
         </form>
         <div class="text-center">
           <p class="gray-text">For security reasons we don't store your password. Your password will be reset and a new one will be sent.</p>
-          <p><a href="#loginform" data-toggle="modal" onclick="closeModal()"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Back to Login</a></p>
+          <p><a href="staffLogin.php" data-toggle="modal" onclick="closeModal()"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Back to Login</a></p>
         </div>
       </div>
     </div>
