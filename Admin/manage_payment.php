@@ -77,7 +77,7 @@ mysqli_close($link);
             <li><a href="manage_room.php">Rooms</a></li>
             <li><a href="managestaff.php">Staff</a></li>
             <li><a href="#">Residents</a></li>
-            <li><a href="#">Billing Details</a></li>
+            <li><a href="manage_resident.php">Billing Details</a></li>
             <li><a href="#">Payment Info</a></li>
             <li><a href="#" id = "logout">Logout</a></li>
         </ul>

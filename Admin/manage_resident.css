@@ -53,41 +53,37 @@ nav ul li a:hover .logo {
     transition: transform 0.3s; /* Transition effect */
 }
 
-.container {
+.content {
     margin-left: 220px; /* Adjust based on nav width */
     padding: 20px;
+    text-align: center;
 }
 
-.search-container {
-    margin-bottom: 20px;
+.admin-profile {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    text-align: center;
+    color: #333;
 }
 
-#paymentTable {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#paymentTable th,
-#paymentTable td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-#paymentTable th {
-    background-color: #f2f2f2;
+.admin-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
-th,
-td {
+th, td {
+    border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
 }
 
 th {
@@ -98,39 +94,62 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.received-amount {
-    color: green;
+tr:hover {
+    background-color: #ddd;
 }
 
-.pending-amount {
-    color: red;
-}
+/* Add staff */
 
-.total-row {
-    background-color: #ffc107;
-    color: blue; /* Change the color of the total amount here */
-}
-
-.pagination {
+.add-staff {
     margin-top: 20px;
 }
 
-.pagination button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
+.add-staff h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.add-staff form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.add-staff label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.add-staff input[type="text"],
+.add-staff input[type="email"],
+.add-staff input[type="password"],
+.add-staff input[type="number"],
+.add-staff input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.add-staff button {
+    width: 100%;
+    padding: 10px;
     border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    margin-right: 10px;
+    transition: background-color 0.3s ease;
 }
 
-.pagination button:hover {
-    background-color: #555;
+.add-staff button:hover {
+    background-color: #0056b3;
 }
 
-.pagination button:disabled {
-    background-color: #888;
-    cursor: not-allowed;
+.add-staff button:focus {
+    outline: none;
 }
-
 

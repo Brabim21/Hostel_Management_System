@@ -21,7 +21,7 @@
             </li>
             <li><a href="manage_room.php">Rooms</a></li>
             <li><a href="managestaff.php">Staff</a></li>
-            <li><a href="#">Residents</a></li>
+            <li><a href="manage_resident.php">Residents</a></li>
             <li><a href="billing_details.php">Billing Details</a></li>
             <li><a href="manage_payment.php">Payment Info</a></li>
             <li><a href="#">Logout</a></li>
