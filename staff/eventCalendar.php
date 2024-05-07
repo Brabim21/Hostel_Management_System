@@ -190,8 +190,8 @@ nav ul li a:hover {
                     <li><a href="home.php">Dashboard</a></li>
                 </a>
             </li>
-            <li><a href="#">Resident Info</a></li>
-            <li><a href="#">Maintenance</a></li>
+            <li><a href="residentInfo.php">Resident Info</a></li>
+            <li><a href="maintenance.php">Maintenance</a></li>
             <li><a href="eventCalendar.php">Event Calendar</a></li>
             <li><a href="logout.php?logout=true">Logout</a></li>
         </ul>
