@@ -5,15 +5,15 @@ define("DB_USERNAME", "root");
 define("DB_PASSWORD", "");
 define("DB_NAME", "hostel_management_system");
 
-# Connection
+// Connection
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-# Check connection
+// Check connection
 if (!$link) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-# Set character set
+// Set character set
 mysqli_set_charset($link, "utf8");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["signup"])) {
@@ -43,19 +43,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["signup"])) {
     // Check for errors before inserting into database
     if (empty($name_err) && empty($email_err) && empty($password_err)) {
         // Prepare and execute SQL statement to insert user data
-        $sql = "INSERT INTO `user` (name, email, password, age, contact_number, college_studying, guardian_name, guardian_contact_number, guardian_address, company_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO `user` (name, email, password, age, contact_number, guardian_name, guardian_contact_number, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($link, $sql);
-        mysqli_stmt_bind_param($stmt, "ssssssssss", $param_name, $param_email, $param_password, $param_age, $param_contact_number, $param_college_studying, $param_guardian_name, $param_guardian_contact_number, $param_guardian_address, $param_company_name);
+        mysqli_stmt_bind_param($stmt, "ssssssss", $param_name, $param_email, $param_password, $param_age, $param_contact_number, $param_guardian_name, $param_guardian_contact_number, $param_address);
         $param_name = $name;
         $param_email = $email;
         $param_password = $password; // Password is not hashed
         $param_age = $_POST["age"];
         $param_contact_number = $_POST["contact_number"];
-        $param_college_studying = $_POST["college_studying"];
         $param_guardian_name = $_POST["guardian_name"];
         $param_guardian_contact_number = $_POST["guardian_contact_number"];
-        $param_guardian_address = $_POST["guardian_address"];
-        $param_company_name = $_POST["company_name"];
+        $param_address = $_POST["guardian_address"];
 
         if (mysqli_stmt_execute($stmt)) {
             // Sign up successful, redirect to login page
@@ -67,8 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["signup"])) {
         }
         mysqli_stmt_close($stmt);
     }
-
-    // Close connection
-    mysqli_close($link);
 }
+
+// Close connection
+mysqli_close($link);
 ?>

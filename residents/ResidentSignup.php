@@ -25,8 +25,7 @@
       <label for="contact_number">Contact Number:</label>
       <input type="text" id="contact_number" name="contact_number" placeholder="Your contact number">
 
-      <label for="college_studying">College Studying:</label>
-      <input type="text" id="college_studying" name="college_studying" placeholder="College name">
+
 
       <label for="guardian_name">Guardian Name:</label>
       <input type="text" id="guardian_name" name="guardian_name" placeholder="Guardian name">
@@ -34,15 +33,12 @@
       <label for="guardian_contact_number">Guardian Contact Number:</label>
       <input type="text" id="guardian_contact_number" name="guardian_contact_number" placeholder="Guardian contact number">
 
-      <label for="guardian_address">Guardian Address:</label>
-      <input type="text" id="guardian_address" name="guardian_address" placeholder="Guardian address">
-
-      <label for="company_name">Company Name:</label>
-      <input type="text" id="company_name" name="company_name" placeholder="Company name">
+      <label for="address"> Address:</label>
+      <input type="text" id="address" name="address" placeholder="address">
 
       <input type="submit" name="signup" value="Sign Up">
     </form>
-    <a href="login.php">Existing User</a> <!-- Link to login page -->
+    <a href="Residentlogin.php">Existing User</a> <!-- Link to login page -->
   </div>
 </body>
 </html>
