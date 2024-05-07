@@ -11,10 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $age = $_POST['age'];
     $email = $_POST['email'];
     $contactNumber = $_POST['contactNumber'];
+    $password = $_POST['password'];
     $address = $_POST['address'];
 
     // Update staff details in the database
-    $sql = "UPDATE staff SET first_name='$firstName', last_name='$lastName', age='$age', email='$email', contact_number='$contactNumber', address='$address' WHERE staff_id=$staffId";
+    $sql = "UPDATE staff SET first_name='$firstName', last_name='$lastName', age='$age', email='$email', password='$password', contact_number='$contactNumber', address='$address' WHERE staff_id=$staffId";
 
     if (mysqli_query($link, $sql)) {
         // Redirect back to the manageStaff.php page after updating

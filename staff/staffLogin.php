@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <title>HostelStays</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="staffLogin.css">
 </head>
 <body>
   <div class="container">
@@ -18,13 +18,18 @@
     <form id="login-form">
 
       <p id="email-id">Email or username</p>
-      <input type="text" id="username" name="username" placeholder="Enter your username">
+      <input type="text" id="username" name="username" placeholder="Enter your username" pattern="^[a-zA-Z0-9._%+-]+@gmail.com$">
 
       <p id="pass-id">Enter password</p>
-      <input type="password" id="password" name="password" placeholder="Enter your Password">
+      <input type="password" id="password" name="password" placeholder="Enter your Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one uppercase letter, one digit, and be at least 8 characters long." required>
 
       <input type="checkbox" id="showPasswordCheckbox">
       <label for="showPasswordCheckbox">Show Password</label>
+
+      <!-- Moved Forgot Password link here -->
+      <div class="forgot-password">
+        <a href="./forgotpassword.php" id="forgot-password">Forgot Password?</a>
+      </div>
 
       <button type="submit" id="sign-in">Sign in</button>
 
@@ -33,42 +38,6 @@
 
   </div>
 
-  <!-- Script tag moved to the end of the body -->
-  <script>
-    document.getElementById("showPasswordCheckbox").addEventListener("change", function() {
-      var passwordField = document.getElementById("password");
-      if (this.checked) {
-        passwordField.type = "text";
-      } else {
-        passwordField.type = "password";
-      }
-    });
-
-    document.getElementById("login-form").addEventListener("submit", function(event) {
-      event.preventDefault(); // Prevent the default form submission
-
-      let username = document.getElementById("username").value;
-      let password = document.getElementById("password").value;
-
-      // Send AJAX request to login.php
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "../login.php", true);
-      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          console.log("Response from login.php:", xhr.responseText); // Log the response
-          // Check if the response exactly matches "success"
-          if (xhr.responseText.trim() === "success") {
-            // If login is successful, redirect to home.php
-            console.log("Redirecting to home.php");
-            window.location.href = "home.php";
-          } else {
-            console.log("Login failed:", xhr.responseText);
-          }
-        }
-      };
-      xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
-    });
-  </script>
+  <script src="stafflogin.js"></script>
 </body>
 </html>

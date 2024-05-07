@@ -2,17 +2,19 @@
 // Include the database connection file
 include '../configuration.php';
 
-// Check if staff_id is provided
-if (isset($_GET['staff_id'])) {
-    // Sanitize the staff_id
-    $staffId = mysqli_real_escape_string($link, $_GET['staff_id']);
+// Check if staffId is provided
+if (isset($_GET['staffId'])) {
+    // Sanitize the staffId
+    $staffId = mysqli_real_escape_string($link, $_GET['staffId']);
 
     // Query to delete staff member
     $sql = "DELETE FROM staff WHERE staff_id = $staffId";
 
     // Execute the query
     if (mysqli_query($link, $sql)) {
-        echo "Staff member deleted successfully.";
+        // Redirect back to the manageStaff.php page after deleting
+        header("Location: manageStaff.php");
+        exit();
     } else {
         echo "Error deleting staff member: " . mysqli_error($link);
     }
