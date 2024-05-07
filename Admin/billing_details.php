@@ -14,13 +14,6 @@ $searchQuery = $search? "AND u.name LIKE '%$search%'" : ''; // Assuming 'name' i
 $residentName = "";
 $receivedAmount = "";
 
-// if (mysqli_num_rows($result) > 0) {
-//     $row = mysqli_fetch_assoc($result);
-//     $residentName = $row['resident_name'];
-//     $receivedAmount = $row['received_amount'];
-// }
-
-
 // Fetch payment details from the database
 if ($link) {
     // Adjusted SQL query to use the billing table
@@ -59,17 +52,6 @@ mysqli_close($link);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="manage_payment.css">
-
-    <script>
-        function updatePaymentStatus(newStatus, paymentId) {
-            // Update the status in the table
-            document.getElementById(`status_${paymentId}`).innerText = newStatus;
-            // Update the hidden input field
-            document.getElementById(`new_status_${paymentId}`).value = newStatus;
-            // Submit the form to update status in the database
-            document.getElementById("update_status_form").submit();
-        }
-    </script>
 
     <title>PBilling</title>
 </head>
@@ -136,7 +118,7 @@ mysqli_close($link);
             <a href="?page=<?php echo ($page > 1) ? ($page - 1) : 1; ?>&search=<?php echo $search; ?>" id="prevBtn">Prev</a>
             <a href="?page=<?php echo ($page < $totalPages) ? ($page + 1) : $totalPages; ?>&search=<?php echo $search; ?>" id="nextBtn">Next</a>
         </div>
-    <form id="update_status_form" method="post" action="update_payment_status.php" style="display: none;">
+    <form id="update_status_form" method="post" action="update_billing.php" style="display: none;">
         <input type="hidden" name="payment_id[]" />
         <input type="hidden" name="new_status[]" />
     </form>
@@ -167,7 +149,7 @@ mysqli_close($link);
     <div id ="update-container">
 
         <h2>Update Payment</h2>
-        <form method="post" action="update_payment.php">
+        <form method="post" action="update_billing.php">
             <input type="hidden" name="update_id" id="update_id">
             <label for="resident_name">Resident Name:</label>
             <input type="text" name="resident_name" id="resident_name" required>
@@ -218,6 +200,33 @@ mysqli_close($link);
     updateContainer.style.display = updateContainer.style.display === 'none' ? 'block' : 'none';
 });
 
+    // Add event listener to the update button
+    document.getElementById('update-btn').addEventListener('click', function() {
+    // Get the update form container
+    var updateContainer = document.getElementById('update-container');
+    });
+
+function handleSearch() {
+        const searchInput = document.getElementById('searchInput');
+        const residentName = searchInput.value;
+        localStorage.setItem('residentName', residentName); // Store the resident name in local storage
+        window.location.href = 'update_billing.php'; // Redirect to update_bill.php
+    }
+
+    // Call handleSearch when the search button is clicked
+    document.querySelector('.search-container form').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent the default form submission
+        handleSearch();
+    });
+
+        function updatePaymentStatus(newStatus, paymentId) {
+            // Update the status in the table
+            document.getElementById(`status_${paymentId}`).innerText = newStatus;
+            // Update the hidden input field
+            document.getElementById(`new_status_${paymentId}`).value = newStatus;
+            // Submit the form to update status in the database
+            document.getElementById("update_status_form").submit();
+        }
 
 </script>
 </body>
