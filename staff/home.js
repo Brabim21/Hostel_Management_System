@@ -1,6 +1,6 @@
 // Function to update statistics from the backend
 function updateStatisticsFromBackend() {
-    fetch('http://localhost/home.php') // Replace 'get_statistics.php' with your actual PHP script filename
+    fetch('http://localhost/home.php') 
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
