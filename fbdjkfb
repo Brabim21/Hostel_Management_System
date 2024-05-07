@@ -1,0 +1,238 @@
+[33mcommit e3cc85983f850397d04a183fc57415f8ba69339f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mswatantra[m[33m, [m[1;32mmain[m[33m)[m
+Author: SwatantraNp1 <swatantra.nepal7676@gmail.com>
+Date:   Tue May 7 18:08:38 2024 +0545
+
+    profile edit and update done, resident dashboard done, chat box done, sign up bugs fixed maintenence mvp done
+
+[33mcommit a46af768742230693df87a56c0319538a4efb130[m
+Merge: 605bff4 517b685
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Sun May 5 22:10:33 2024 +0545
+
+    Merge pull request #34 from Brabim21/Brabim21-patch-11
+    
+    Add files via upload
+
+[33mcommit 517b685f350d2e083411725f6d8cc521be10f518[m[33m ([m[1;31morigin/Brabim21-patch-11[m[33m)[m
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Sun May 5 22:10:16 2024 +0545
+
+    Add files via upload
+    
+    icon used in resident dashboard
+
+[33mcommit 605bff4e53916631d1cd73d168ae5d47e28a8d27[m
+Merge: 23ea9e8 387b5b4
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Sun May 5 22:05:26 2024 +0545
+
+    Merge pull request #33 from Brabim21/Brabim21-patch-10
+    
+    Update ResidentDash.css
+
+[33mcommit 387b5b495c2bc64e5d410932a317b4e68f533193[m
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Sun May 5 22:05:13 2024 +0545
+
+    Update ResidentDash.css
+    
+    Uploaded correct CSS file for resident dashboard
+
+[33mcommit 23ea9e88a22ca26a96008d7d9ac0433fbe0065c1[m
+Author: SwatantraNp1 <swatantra.nepal7676@gmail.com>
+Date:   Sun May 5 15:33:04 2024 +0545
+
+    deleted
+
+[33mcommit 1e71067f2769e3e0da6088de61730cd50af1ed62[m
+Author: SwatantraNp1 <swatantra.nepal7676@gmail.com>
+Date:   Sun May 5 15:23:36 2024 +0545
+
+    Sign Up Page, Login In Page,redirectionsal  error handling done
+
+[33mcommit b27e4e7e43cf2225ea395b243ceca0cb859c0c4c[m
+Merge: c8dd606 52822f5
+Author: Ganeshparajuli2059 <119146652+Ganeshparajuli2059@users.noreply.github.com>
+Date:   Thu Apr 18 07:04:27 2024 +0545
+
+    Merge pull request #17 from Brabim21/Ganeshparajuli2059-patch-4
+    
+    Add files via upload
+
+[33mcommit 52822f5d9644a15fb09bbbea63228ba525156a9e[m[33m ([m[1;31morigin/Ganeshparajuli2059-patch-4[m[33m)[m
+Author: Ganeshparajuli2059 <119146652+Ganeshparajuli2059@users.noreply.github.com>
+Date:   Thu Apr 18 07:03:53 2024 +0545
+
+    Add files via upload
+
+[33mcommit c8dd6063ed4cf8ab3263ab20120aa646a6115069[m
+Merge: 31dedfe 6212e11
+Author: SwatantraNp1 <127380630+SwatantraNp1@users.noreply.github.com>
+Date:   Mon Apr 15 11:12:59 2024 +0545
+
+    Merge pull request #16 from Brabim21/SwatantraNp1-patch-1
+    
+    Add files via upload
+
+[33mcommit 6212e114c5b173f0f587af9cdf42c79ed8ed6187[m[33m ([m[1;31morigin/SwatantraNp1-patch-1[m[33m)[m
+Author: SwatantraNp1 <127380630+SwatantraNp1@users.noreply.github.com>
+Date:   Mon Apr 15 11:12:15 2024 +0545
+
+    Add files via upload
+
+[33mcommit 31dedfe992d3089ff74df6bfbd518badf9efa55a[m
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Mon Apr 15 10:57:31 2024 +0545
+
+    Add files via upload
+
+[33mcommit f44b25ea5ebbe20bcd00918ae1d86e10a5887fd0[m
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Mon Apr 15 10:55:09 2024 +0545
+
+    Delete HMS.png
+    
+    unnecessary file
+
+[33mcommit 93efccac353f10ebc26da704aac9a8f9b755c277[m
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Mon Apr 15 10:54:45 2024 +0545
+
+    Delete HMS.html
+    
+    this was a unnnecessary file
+
+[33mcommit 540e0c165bfe1be6b99a0ed4659898dbcb29dbc2[m
+Merge: 4f790c6 520e9a3
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Mon Apr 15 10:54:00 2024 +0545
+
+    Merge pull request #15 from Brabim21/Brabim21-patch-3
+    
+    Delete HMS.css
+
+[33mcommit 520e9a3d8f8ca2e2f46a64faf4669e6227ffa303[m[33m ([m[1;31morigin/Brabim21-patch-3[m[33m)[m
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Mon Apr 15 10:53:47 2024 +0545
+
+    Delete HMS.css
+    
+    This was a unnecessary file
+
+[33mcommit 4f790c67579062c7f249774199091bcefe2161d9[m
+Merge: 85cc5f4 40d7f54
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Mon Apr 15 10:52:39 2024 +0545
+
+    Merge pull request #14 from Brabim21/Brabim21-patch-2
+    
+    Update AdminDashboard.css
+
+[33mcommit 40d7f545b0d4437730607eaff170836317574de3[m[33m ([m[1;31morigin/Brabim21-patch-2[m[33m)[m
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Mon Apr 15 10:51:51 2024 +0545
+
+    Update AdminDashboard.css
+    
+    The css for dashboard is updated with new ui
+
+[33mcommit 85cc5f4e6f7fc6e4b5e4aee79ca1da57c9f3dabe[m
+Merge: dbffaec cb45052
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Mon Apr 15 10:50:57 2024 +0545
+
+    Merge pull request #13 from Brabim21/Brabim21-patch-1
+    
+    Update staffLogin.php
+
+[33mcommit cb450523a2af5632dc11fc7bd235304e1866febe[m[33m ([m[1;31morigin/Brabim21-patch-1[m[33m)[m
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Mon Apr 15 10:50:43 2024 +0545
+
+    Update staffLogin.php
+    
+    There was no proper UI in the page. Now i have updated the UI with functional requirements
+
+[33mcommit dbffaec7afdd648038483b95e46e0301e009e19d[m
+Merge: 5e24d1b 6bc64ef
+Author: Ganeshparajuli2059 <119146652+Ganeshparajuli2059@users.noreply.github.com>
+Date:   Mon Apr 15 10:49:59 2024 +0545
+
+    Merge pull request #12 from Brabim21/Ganeshparajuli2059-patch-3
+    
+    Update home.php
+
+[33mcommit 6bc64ef5ff8a1c57fe99c3106a17582bbd03afea[m[33m ([m[1;31morigin/Ganeshparajuli2059-patch-3[m[33m)[m
+Author: Ganeshparajuli2059 <119146652+Ganeshparajuli2059@users.noreply.github.com>
+Date:   Mon Apr 15 10:49:46 2024 +0545
+
+    Update home.php
+    
+    there was error while connecting css
+
+[33mcommit 5e24d1b9c141f9de66a917a3369b8fcd83673b1e[m
+Merge: 8ca7e2e 48cdebc
+Author: Ganeshparajuli2059 <119146652+Ganeshparajuli2059@users.noreply.github.com>
+Date:   Mon Apr 15 10:47:32 2024 +0545
+
+    Merge pull request #11 from Brabim21/Ganeshparajuli2059-patch-2
+    
+    Add files via upload
+
+[33mcommit 48cdebc22b472bb8e5e311ffe33c2584291fb5af[m[33m ([m[1;31morigin/Ganeshparajuli2059-patch-2[m[33m)[m
+Author: Ganeshparajuli2059 <119146652+Ganeshparajuli2059@users.noreply.github.com>
+Date:   Mon Apr 15 10:47:16 2024 +0545
+
+    Add files via upload
+    
+    This counts the total residents, room and staff from the database
+
+[33mcommit 8ca7e2ee6421809c2eff6a345803b00171fab54c[m
+Merge: dcb08f7 a44a9c6
+Author: Ganeshparajuli2059 <119146652+Ganeshparajuli2059@users.noreply.github.com>
+Date:   Mon Apr 15 10:45:37 2024 +0545
+
+    Merge pull request #10 from Brabim21/Ganeshparajuli2059-patch-1
+    
+    Update home.php
+
+[33mcommit a44a9c6d0f01b026618965f59b10c9f86023e4cc[m[33m ([m[1;31morigin/Ganeshparajuli2059-patch-1[m[33m)[m
+Author: Ganeshparajuli2059 <119146652+Ganeshparajuli2059@users.noreply.github.com>
+Date:   Mon Apr 15 10:44:42 2024 +0545
+
+    Update home.php
+    
+    total number of staff, room , residents werenot properly showing now it works properly.
+
+[33mcommit dcb08f79d00a3faaf641a8a6d63dfd8100a148fc[m[33m ([m[1;31morigin/secondary-branch[m[33m)[m
+Author: Brabim21 <119724645+Brabim21@users.noreply.github.com>
+Date:   Mon Apr 15 10:21:35 2024 +0545
+
+    Update home.php
+    
+    UI for staff dashboard is updated with the features required.
+
+[33mcommit e17a0b46c85d94d99e19c1566f478fd69680f9a0[m
+Author: Ganeshparajuli2059 <119146652+Ganeshparajuli2059@users.noreply.github.com>
+Date:   Mon Apr 15 08:27:25 2024 +0545
+
+    Update home.php
+    
+    updated footer
+
+[33mcommit ecfce5830f6ea3df8a1a050c768c104322ed7b20[m
+Author: Rojan Dhungel <120009180+rojan-dhungel@users.noreply.github.com>
+Date:   Sun Apr 14 18:25:10 2024 +0545
+
+    Add files via upload
+
+[33mcommit 54a28a13aa95ec0587c1fff75e4ee2a49f0644b3[m
+Author: Ganeshparajuli2059 <119146652+Ganeshparajuli2059@users.noreply.github.com>
+Date:   Sun Apr 14 18:18:20 2024 +0545
+
+    Delete Admin/dashboard.php
+    
+    this was an extra file , so i am deleting this file
+
+[33mcommit 6ddd1608fc3b1ec5014210b890a46a1d24da53b4[m
+Author: Brabim21 <11
