@@ -50,14 +50,22 @@ nav ul li a:hover .logo {
     padding: 20px;
     text-align: center;
 }
+<<<<<<< HEAD
 .admin-profile {
+=======
+.resident-profile {
+>>>>>>> a46af768742230693df87a56c0319538a4efb130
     position: fixed;
     top: 10px;
     right: 20px;
     text-align: center;
     color: #333;
 }
+<<<<<<< HEAD
 .admin-profile img {
+=======
+.resident-profile img {
+>>>>>>> a46af768742230693df87a56c0319538a4efb130
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -76,6 +84,7 @@ nav ul li a:hover .logo {
     padding: 20px;
     margin: 10px;
     text-align: center;
+<<<<<<< HEAD
     width: 200px;
     transition: transform 0.3s; /* Transition effect */
 }
@@ -117,3 +126,79 @@ nav ul li a:hover .logo {
     border-radius: 10px;
     margin-top: 10px;
 }
+=======
+    width: 300px; /* Adjusted width */
+    height: 200px; /* Adjusted height */
+    transition: transform 0.3s; /* Transition effect */
+}
+.info-box img {
+    max-width: 80px; /* Adjusted width */
+    max-height: 80px; /* Adjusted height */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.info-box:hover {
+    transform: scale(1.1); /* Example hover effect */
+}
+.task-box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.task-box {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    width: 300px; /* Adjusted width */
+    height: 200px; /* Adjusted height */
+    transition: transform 0.3s; /* Transition effect */
+}
+.task-box:hover {
+    transform: scale(1.1); /* Example hover effect */
+}
+.task-box h2 {
+    margin-top: 0;
+}
+.task-box img {
+    max-width: 80px; /* Adjusted width */
+    max-height: 80px; /* Adjusted height */
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.reservation-details {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    width: 300px; /* Adjusted width */
+    transition: transform 0.3s; /* Transition effect */
+}
+.reservation-details h2 {
+    margin-top: 0;
+}
+.reservation-details p {
+    margin-bottom: 10px;
+}
+.reservation-details button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.reservation-details button:hover {
+    background-color: #555;
+}
+.separator-bar {
+    height: 2px;
+    background-color: #ccc;
+    margin: 20px 0;
+}
+>>>>>>> a46af768742230693df87a56c0319538a4efb130
