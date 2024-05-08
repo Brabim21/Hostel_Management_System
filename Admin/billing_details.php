@@ -155,7 +155,7 @@ mysqli_close($link);
             <input type="text" name="resident_name" id="resident_name" required>
             <label for="received_amount">Received Amount:</label>
             <input type="number" name="received_amount" id="received_amount" step="0.01" required>
-            <button type="submit">Update Payment</button>
+            <button type="submit" id = "" >Update Payment</button>
         </form>
     </div>
 

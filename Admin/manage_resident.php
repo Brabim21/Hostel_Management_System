@@ -136,8 +136,7 @@
 
     <div class="add-user">
             <h2>Add User</h2>
-            <form id="addUserForm" action="adduser.php" method="post" enctype="multipart/form-data">
-
+            <form id="addUserForm" method="post" enctype="multipart/form-data">
                 <label for="firstName">Name:</label>
                 <input type="text" id="name" name="name" required><br>
                 <label for="firstName">Email:</label>
@@ -158,6 +157,21 @@
                 <input type="text" id="guardianContactNumber" name="guardianContactNumber" required><br>
                 <label for="address">Address:</label>
                 <input type="text" id="address" name="address" required><br>
+                <label for="assignedRoomId">Assigned Room Id:</label>
+                <select id="assignedRoomId" name="assignedRoomId" required>
+                <option value="">Select a room</option>
+                <?php
+                $sql = "SELECT room_id, room_name FROM hostel";
+                $result = mysqli_query($link, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<option value='". $row['room_id']. "'>". $row['room_name']. "</option>";
+                    }
+                } else {
+                    echo "<option value=''>No rooms found</option>";
+                }
+                ?>
+                
                 <button type="submit">Add User</button>
             </form>
         </div>
@@ -229,6 +243,30 @@ $(document).ready(function() {
                 }
             });
         }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('addUserForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Collect form data
+        var formData = new FormData(this);
+
+        // Send the form data to adduser.php using AJAX
+        fetch('adduser.php', {
+            method: 'POST',
+            body: formData
+        })
+       .then(response => response.text())
+       .then(data => {
+            console.log(data); // Log the response text for debugging
+            // Redirect back to manage_resident.php
+            window.location.href = 'manage_resident.php';
+        })
+       .catch(error => {
+            console.error('Error:', error);
+        });
     });
 });
 </script>

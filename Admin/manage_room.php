@@ -51,7 +51,8 @@
                         echo "<td>" . nl2br($row['facility']) . "</td>";
                         echo "<td>" . (isset($row['residents_count']) ? $row['residents_count'] : 'N/A') . "</td>";
                         echo "<td>";
-                        echo "<button onclick='openEditOverlay(" . $row['room_id'] . ", \"" . $row['room_name'] . "\", " . $row['room_price'] . ", \"" . $row['facility'] . "\", " . (isset($row['residents_count']) ? $row['residents_count'] : 'N/A') . ")'>Update</button>";
+                        echo "<button class='update-button' data-room-id='" . $row['room_id'] . "' data-room-name='" . $row['room_name'] . "' data-room-price='" . $row['room_price'] . "' data-facility='" . htmlspecialchars($row['facility']) . "' data-resident-count='" . (isset($row['residents_count']) ? $row['residents_count'] : 'N/A') . "'>Update</button>";
+
 
 
 
@@ -175,6 +176,33 @@
             // If user clicks Cancel, do nothing
             return false;
         }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get all the "Update" buttons
+        var updateButtons = document.querySelectorAll('.update-button');
+
+        // Add click event listener to each "Update" button
+        updateButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Get the room details from the button's data attributes
+                var roomId = button.getAttribute('data-room-id');
+                var roomName = button.getAttribute('data-room-name');
+                var roomPrice = button.getAttribute('data-room-price');
+                var facility = button.getAttribute('data-facility');
+                var residentCount = button.getAttribute('data-resident-count');
+
+                // Populate the form fields with the room details
+                document.getElementById('roomId').value = roomId;
+                document.getElementById('roomName').value = roomName;
+                document.getElementById('roomPrice').value = roomPrice;
+                document.getElementById('facility').value = facility;
+                document.getElementById('residentCount').value = residentCount;
+
+                // Display the edit overlay
+                document.getElementById('editOverlay').style.display = 'block';
+            });
+        });
     });
 
 </script>

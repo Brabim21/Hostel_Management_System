@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_query($link, $updateSql)) {
         // Update successful
         echo "Room details updated successfully.";
+        echo "<script>window.location.href = 'manage_room.php';</script>";
     } else {
         // Update failed
         echo "Error updating room details: " . mysqli_error($link);
