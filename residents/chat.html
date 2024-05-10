@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Management System - Resident Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #333;
+            color: #fff;
+            width: 200px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+        nav ul li {
+            margin-bottom: 10px;
+        }
+        nav ul li a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        .logo {
+            width: 100px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .container {
+            margin-left: 220px;
+            padding: 20px;
+            text-align: center;
+        }
+        .chat-box {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow-y: scroll;
+            margin: 20px auto;
+            padding: 10px;
+        }
+        .chat-message {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .input-box {
+            margin-top: 20px;
+        }
+        .input-box textarea {
+            width: 80%;
+            height: 60px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+        .input-box button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .input-box button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="ResidentDash.php">
+                    <img src="Hostel.avif" alt="Hostel Logo" class="logo">
+                    Dashboard
+                </a>
+            </li>
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="#">Book Facilities</a></li>
+            <li><a href="PaymentResident.html">My Payments</a></li>
+            <li><a href="MainteneceRequest.html">Maintenance Requests</a></li>
+            <li><a href="#">Notifications</a></li>
+            <li><a href="chat.html">Chats</a></li> <!-- Redirect to chat.html -->
+            <li><a href="logout.php?logout=true">Logout</a></li>
+    
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Chat with Admin</h1>
+        <div class="chat-box">
+            <!-- Past Conversations -->
+            <div class="chat-message">Hello! How can I assist you today?</div>
+            <div class="chat-message">I have some feedback regarding the cleanliness of the common area.</div>
+            <div class="chat-message">Sure, I'll forward your feedback to the maintenance team.</div>
+            <!-- End of Past Conversations -->
+        </div>
+        <div class="input-box">
+            <form action="ResidentDash.php" method="post">
+                <textarea name="message" placeholder="Type your message..."></textarea>
+                <button type="submit" name="send_message">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
