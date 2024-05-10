@@ -80,61 +80,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hostel Management System</title>
-=======
+
   <title>Hostel Management System - Login</title>
->>>>>>> a46af768742230693df87a56c0319538a4efb130
   <link rel="stylesheet" href="ResidentLogin.css">
 </head>
 <body>
   <div class="container">
     <img src="Hostel.jpg" alt="Hostel Image" class="background-image">
     <h1>Hostel Management System</h1>
-<<<<<<< HEAD
-    <h2>Account</h2>
-    <form id="login-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" placeholder="Your name">
-      <span class="error"><?php echo isset($name_err) ? $name_err : ""; ?></span>
 
-      <label for="username">Email/Registration Number:</label>
-      <input type="text" id="username" name="username" placeholder="Your email or registration number">
-      <span class="error"><?php echo isset($username_err) ? $username_err : ""; ?></span>
-=======
     <h2>Login</h2>
     <form id="login-form" action="login_process.php" method="post">
       <label for="email">Email/Registration Number:</label>
       <input type="text" id="email" name="email" placeholder="Your email or registration number">
->>>>>>> a46af768742230693df87a56c0319538a4efb130
 
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" placeholder="Your password">
       <span class="error"><?php echo isset($password_err) ? $password_err : ""; ?></span>
 
-<<<<<<< HEAD
-      <input type="submit" value="Sign Up">
-    </form>
-    <a href="#" id="existing-user-link">Existing User</a> | <a href="#" id="new-user-link">New User</a>
-    <div id="signup-form" style="display: none;">
-      <h2>Sign Up</h2>
-      <form action="residencelogin.php" method="post">
-        <label for="new-username">Email:</label>
-        <input type="text" id="new-username" name="username" placeholder="Your email">
 
-        <label for="new-password">Password:</label>
-        <input type="password" id="new-password" name="password" placeholder="Your password">
-
-        <input type="submit" value="Sign Up">
-      </form>
-    </div>
-=======
       <input type="submit" name="login" value="Login">
     </form>
     <a href="ResidentSignup.php">New User</a> <!-- Link to sign-up page -->
->>>>>>> a46af768742230693df87a56c0319538a4efb130
     <a href="#">Forgot password?</a>
   </div>
 </body>
