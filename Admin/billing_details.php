@@ -137,39 +137,96 @@ mysqli_close($link);
 }
 </style>
 
-    <div class="generating-bill">
-    <div class="search-container-1">
+<div class="generating-bill">
+        <div class="search-container-1">
             <form method="get" action="">
                 <input type="text" name="search" id="searchInput" placeholder="Search by resident name..." value="<?php echo $search;?>">
-                <button type="submit">Search</button>
+                <button type="submit" id="searchButton-2">Search</button>
+
             </form>
         </div>
 
-     <div class="update-bill">
-    <div id ="update-container">
-
-        <h2>Update Payment</h2>
-        <form method="post" action="update_billing.php">
-            <input type="hidden" name="update_id" id="update_id">
-            <label for="resident_name">Resident Name:</label>
-            <input type="text" name="resident_name" id="resident_name" required>
-            <label for="received_amount">Received Amount:</label>
-            <input type="number" name="received_amount" id="received_amount" step="0.01" required>
-            <button type="submit" id = "" >Update Payment</button>
-        </form>
-    </div>
-
-    <div class="generate-bill-container">
-        <h2>Generate Bill</h2>
-        <form method="get" action="generate_bill.php">
-            <input type="hidden" name="billing_id" id="billing_id">
-            <button type="submit">Generate Bill</button>
-        </form>
-    </div>
-
-    </div>   
+        <div class="update-bill">
+            <div id="update-container">
+                <h2>Update Payment</h2>
+                <form method="post" action="update_billing.php">
+                    <input type="hidden" name="update_id" id="update_id">
+                    <label for="resident_name">Resident Name:</label>
+                    <input type="text" name="resident_name" id="resident_name" required readonly>
+                    <label for="room_name">Room Name:</label>
+                    <input type="text" name="room_name" id="room_name" required readonly>
+                    <label for="total_fee">Total Fee:</label>
+                    <input type="number" name="total_fee" id="total_fee" step="0.01" required readonly>
+                    <label for="pending_amount">Pending Amount:</label>
+                    <input type="number" name="pending_amount" id="pending_amount" step="0.01" required readonly>
+                    <label for="received_amount">Received Amount:</label>
+                    <input type="number" name="received_amount" id="received_amount" step="0.01" required>
+                    <button type="submit" id="updateButton" disabled>Update Payment</button>
+                </form>
+            </div>
+        </div>
     </div>
     <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    const updateForm = document.querySelector('.update-bill form');
+    const searchButton = document.getElementById('searchButton-2'); // Corrected id here
+
+    searchButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        const searchInput = document.getElementById('searchInput').value.trim();
+
+        // Perform AJAX request to fetch resident details
+        fetch(`fetch_resident_details.php?search=${searchInput}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Populate resident details into the update form
+                    document.getElementById('resident_name').value = data.residentName;
+                    document.getElementById('room_name').value = data.roomName;
+                    document.getElementById('total_fee').value = data.totalFee;
+                    document.getElementById('pending_amount').value = data.pendingAmount;
+                    document.getElementById('received_amount').value = data.receivedAmount;
+
+                    // Enable the update button
+                    document.getElementById('updateButton').disabled = false;
+                } else {
+                    alert('Resident not found!');
+                    // Clear the update form
+                    updateForm.reset();
+                    // Disable the update button
+                    document.getElementById('updateButton').disabled = true;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    updateForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(updateForm);
+
+        // Perform AJAX request to update payment
+        fetch('update_billing.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Payment updated successfully!');
+                // Redirect to billing_details.php
+                window.location.href = 'billing_details.php';
+            } else {
+                alert('Failed to update payment.');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+});
+
+
 
 
     // Add event listener to the logout link

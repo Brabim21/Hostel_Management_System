@@ -3,7 +3,7 @@
 include_once "../configuration.php";
 
 // Retrieve resident name from local storage
-$residentName = isset($_COOKIE['residentName'])? $_COOKIE['residentName'] : '';
+$residentName = isset($_POST['resident_name']) ? $_POST['resident_name'] : '';
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -25,8 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param('ds', $receivedAmount, $userId);
     $stmt->execute();
 
-    // Redirect to billing_details.php after successful update
-    header('Location: billing_details.php');
+    // Return JSON response
+    header('Content-Type: application/json');
+    echo json_encode(['success' => true]);
     exit;
 }
 ?>

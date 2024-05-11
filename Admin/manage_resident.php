@@ -11,6 +11,17 @@
             max-width: 50px;
             max-height: 50px;
         }
+    
+            .update-form {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 1001; /* ensure the form is above the overlay */
+        }
     </style>
 </head>
 <body>
@@ -66,7 +77,7 @@
                 $startFrom = ($page - 1) * $recordsPerPage;
 
                 // SQL query with search condition
-                $sql = "SELECT user_id, name, email, age, contact_number, guardian_name, guardian_contact_number, address, assigned_room_id, user_status 
+                $sql = "SELECT user_id, name, email, age, contact_number, guardian_name, guardian_contact_number, address, assigned_room_name, user_status 
                         FROM user";
                 if (!empty($search)) {
                     $sql.= " WHERE name LIKE '%$search%'";
@@ -90,13 +101,15 @@
                         echo "<td>". $row['guardian_name']. "</td>";
                         echo "<td>". $row['guardian_contact_number']. "</td>";
                         echo "<td>". $row['address']. "</td>";
-                        echo "<td>". $row['assigned_room_id']. "</td>";
+                        echo "<td>". $row['assigned_room_name']. "</td>";
                         echo "<td>". ($row['user_status'] == 1? 'Approved' : 'Pending'). "</td>";
                         echo "<td>";
-                        echo "<button class='btn btn-primary update-user' data-user-id='". $row['user_id']."' data-toggle='modal' data-target='#userDetailsModal'>View/Update</button>";
-                        echo "<button class='btn btn-danger delete-user' data-user-id='". $row['user_id']."' data-toggle='modal' data-target='#userDetailsModal'>Delete</button>";
+                        echo "<button class='btn btn-primary update-user' data-user-id='". $row['user_id']."' onclick='openEditUserOverlay(" . $row['user_id'] . ", \"" . $row['name'] . "\", \"" . $row['email'] . "\", " . $row['age'] . ", \"" . $row['contact_number'] . "\", \"" . $row['guardian_name'] . "\", \"" . $row['guardian_contact_number'] . "\", \"" . $row['address'] . "\", \"" . $row['assigned_room_name'] . "\")'>View/Update</button>";
+                        echo "<button class='btn btn-danger delete-user' data-user-id='". $row['user_id']."'>Delete</button>";
+                        
                         echo "</td>";
                         echo "</tr>";
+                        
                     }
                 } else {
                     echo "<tr><td colspan='11'>No residents found</td></tr>";
@@ -134,9 +147,53 @@
 </style>
 
 
-    <div class="add-user">
-            <h2>Add User</h2>
-            <form id="addUserForm" method="post" enctype="multipart/form-data">
+<div class="add-user">
+    <h2>Add User</h2>
+    <form id="addUserForm" method="post" enctype="multipart/form-data">
+        <label for="firstName">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="firstName">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br>
+        <label for="contactNumber">Contact Number:</label>
+        <input type="text" id="contactNumber" name="contactNumber" required><br>
+        <label for="citizenship">Citizenship Front:</label>
+        <input type="file" id="citizenship" name="citizenship" accept="image/*" required><br>
+        <label for="citizenship-back">Citizenship Back:</label>
+        <input type="file" id="citizenship-back" name="citizenshipBack" accept="image/*" required><br>
+        <label for="guardianName">Guardian Name:</label>
+        <input type="text" id="guardianName" name="guardianName" required><br>
+        <label for="guardianContactNumber">Guardian Contact Number:</label>
+        <input type="text" id="guardianContactNumber" name="guardianContactNumber" required><br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br>
+        <label for="assignedRoomId">Assigned Room Id:</label>
+        <select id="assignedRoomName" name="assignedRoomName" required>
+            <option value="">Select a room</option>
+            <?php
+                $sql = "SELECT room_id, room_name FROM hostel";
+                $result = mysqli_query($link, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<option value='". $row['room_id']. "'>". $row['room_name']. "</option>";
+                    }
+                } else {
+                    echo "<option value=''>No rooms found</option>";
+                }
+            ?> 
+        </select>
+        <br>
+        <button type="submit">Add User</button>
+    </form>
+</div>
+
+
+<div class="overlay">
+ <div class="update-form">
+ <form id="updateUserForm" method="POST" action="update_user.php">
                 <label for="firstName">Name:</label>
                 <input type="text" id="name" name="name" required><br>
                 <label for="firstName">Email:</label>
@@ -172,104 +229,95 @@
                 }
                 ?>
                 
-                <button type="submit">Add User</button>
+                <button type="submit">Update user details</button>
             </form>
         </div>
-
-
-    <!-- Modal for user details -->
-<div class="modal fade" id="userDetailsModal" tabindex="-1" role="dialog" aria-labelledby="userDetailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="userDetailsModalLabel">User Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
-            <div class="modal-body">
-                <form id="userDetailsForm">
-                    <!-- User details form fields will be populated here -->
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary update-user-btn" data-dismiss="modal">Update</button>
-                <button type="button" class="btn btn-danger delete-user-btn" data-dismiss="modal">Delete</button>
-            </div>
-        </div>
-    </div>
-</div>
 
+ </div>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Function to show user details in a modal
-    function showUserDetails(userId) {
+    // Handle view/update button click
+    $('.update-user').click(function() {
+        var userId = $(this).data('user-id');
+        // AJAX call to fetch user details from the server
         $.ajax({
-            url: 'fetch_user_details.php',
+            url: 'fetch_resident_details.php',
             method: 'POST',
             data: {userId: userId},
+            dataType: 'json',
             success: function(response) {
-                var userDetails = JSON.parse(response);
-                $('#userDetailsModal #userDetailsForm').html(`
-                    <input type="hidden" name="user_id" value="${userDetails.user_id}">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="name" value="${userDetails.name}" class="form-control">
-                    </div>
-                    <!-- Add other fields as needed -->
-                `);
-                $('#userDetailsModal').modal('show');
+                // Populate the form fields with fetched user details
+                $('#name').val(response.name);
+                $('#email').val(response.email);
+                $('#age').val(response.age);
+                $('#contactNumber').val(response.contact_number);
+                $('#guardianName').val(response.guardian_name);
+                $('#guardianContactNumber').val(response.guardian_contact_number);
+                $('#address').val(response.address);
+                $('#assignedRoomId').val(response.assigned_room_id);
+                
+                // Display the overlay
+                $('.overlay').show();
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
             }
         });
-    }
-
-    // Handle update button click
-    $('body').on('click', '.update-user', function() {
-        var userId = $(this).data('user-id');
-        showUserDetails(userId);
     });
 
-    // Handle delete button click
-    $('body').on('click', '.delete-user', function() {
-        var userId = $(this).data('user-id');
-        if (confirm('Are you sure you want to delete this user?')) {
-            $.ajax({
-                url: 'delete_user.php',
-                method: 'POST',
-                data: {userId: userId},
-                success: function(response) {
-                    location.reload(); // Reload the page to reflect the changes
-                }
-            });
-        }
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('addUserForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission
+    // Handle form submission when Add User button is clicked
+    $('#addUserForm').on('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
 
         // Collect form data
         var formData = new FormData(this);
 
-        // Send the form data to adduser.php using AJAX
-        fetch('adduser.php', {
+        // Send form data to add_user.php using AJAX
+        $.ajax({
+            url: 'add_user.php',
             method: 'POST',
-            body: formData
-        })
-       .then(response => response.text())
-       .then(data => {
-            console.log(data); // Log the response text for debugging
-            // Redirect back to manage_resident.php
-            window.location.href = 'manage_resident.php';
-        })
-       .catch(error => {
-            console.error('Error:', error);
+            data: formData,
+            processData: false, // Prevent jQuery from automatically transforming the data into a query string
+            contentType: false, // Prevent jQuery from setting the Content-Type header
+            success: function(response) {
+                console.log(response); // Log the response for debugging purposes
+                // Optionally, you can redirect to another page or display a success message here
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText); // Log the error response for debugging purposes
+                // Optionally, you can display an error message here
+            }
         });
     });
 });
+
+function openEditUserOverlay(userId, name, email, age, contactNumber, guardianName, guardianContactNumber, address, assignedRoomId) {
+    // Populate the form fields with existing user details
+    document.getElementById('name').value = name;
+    document.getElementById('email').value = email;
+    document.getElementById('age').value = age;
+    document.getElementById('contactNumber').value = contactNumber;
+    document.getElementById('guardianName').value = guardianName;
+    document.getElementById('guardianContactNumber').value = guardianContactNumber;
+    document.getElementById('address').value = address;
+
+    // Select the assigned room id in the dropdown
+    var assignedRoomDropdown = document.getElementById('assignedRoomId');
+    for (var i = 0; i < assignedRoomDropdown.options.length; i++) {
+        if (assignedRoomDropdown.options[i].value === assignedRoomId) {
+            assignedRoomDropdown.selectedIndex = i;
+            break;
+        }
+    }
+
+    // Display the overlay
+    document.querySelector('.overlay').style.display = 'block';
+}
 </script>
+
 
 
 </body>

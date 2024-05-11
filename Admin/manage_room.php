@@ -32,7 +32,6 @@
             <thead>
                 <tr>
                     <th>Room Name</th>
-                    <th>Room Price</th>
                     <th>Facility</th>
                     <th>Resident Count</th>
                     <th>Action</th>
@@ -47,11 +46,10 @@
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
                         echo "<td>" . $row['room_name'] . "</td>";
-                        echo "<td>" . $row['room_price'] . "</td>";
                         echo "<td>" . nl2br($row['facility']) . "</td>";
                         echo "<td>" . (isset($row['residents_count']) ? $row['residents_count'] : 'N/A') . "</td>";
                         echo "<td>";
-                        echo "<button class='update-button' data-room-id='" . $row['room_id'] . "' data-room-name='" . $row['room_name'] . "' data-room-price='" . $row['room_price'] . "' data-facility='" . htmlspecialchars($row['facility']) . "' data-resident-count='" . (isset($row['residents_count']) ? $row['residents_count'] : 'N/A') . "'>Update</button>";
+                        echo "<button class='update-button' data-room-id='" . $row['room_id'] . "' data-room-name='" . $row['room_name'] . "' data-facility='" . htmlspecialchars($row['facility']) . "' data-resident-count='" . (isset($row['residents_count']) ? $row['residents_count'] : 'N/A') . "'>Update</button>";
 
 
 
@@ -77,8 +75,6 @@
                     <input type="hidden" id="roomId" name="roomId">
                     <label for="roomName">Room Name:</label>
                     <input type="text" id="roomName" name="roomName" required><br>
-                    <label for="roomPrice">Room Price:</label>
-                    <input type="text" id="roomPrice" name="roomPrice" required><br>
                     <label for="facility">Facility:</label>
                     <input type="text" id="facility" name="facility" required><br>
                     <label for="residentCount">Resident Count:</label>
@@ -95,8 +91,6 @@
             <form id="addRoomForm" method="post" action="add_room.php">
                 <label for="roomName">Room Name:</label>
                 <input type="text" id="roomName" name="roomName" required><br>
-                <label for="roomPrice">Room Price:</label>
-                <input type="text" id="roomPrice" name="roomPrice" required><br>
                 <label for="facility">Facility:</label>
                 <textarea id="facility" name="facility" rows="4" required></textarea><br>
                 <label for="residentCount">Resident Count:</label>
@@ -138,7 +132,6 @@
     // Populate the form fields with existing room details
     document.getElementById('roomId').value = roomId;
     document.getElementById('roomName').value = roomName;
-    document.getElementById('roomPrice').value = roomPrice;
     document.getElementById('facility').value = facility;
     document.getElementById('residentCount').value = residentCount;
 
@@ -188,14 +181,12 @@
                 // Get the room details from the button's data attributes
                 var roomId = button.getAttribute('data-room-id');
                 var roomName = button.getAttribute('data-room-name');
-                var roomPrice = button.getAttribute('data-room-price');
                 var facility = button.getAttribute('data-facility');
                 var residentCount = button.getAttribute('data-resident-count');
 
                 // Populate the form fields with the room details
                 document.getElementById('roomId').value = roomId;
                 document.getElementById('roomName').value = roomName;
-                document.getElementById('roomPrice').value = roomPrice;
                 document.getElementById('facility').value = facility;
                 document.getElementById('residentCount').value = residentCount;
 
