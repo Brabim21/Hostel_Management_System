@@ -11,17 +11,74 @@
             max-width: 50px;
             max-height: 50px;
         }
-    
-            .update-form {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            z-index: 1001; /* ensure the form is above the overlay */
-        }
+
+        /* Overlay styles */
+.overlay {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form container styles */
+.update-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 80%;
+}
+
+/* Form and input styles */
+#updateUserForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#updateUserForm label {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+#updateUserForm input[type="text"],
+#updateUserForm input[type="email"],
+#updateUserForm input[type="password"],
+#updateUserForm input[type="number"],
+#updateUserForm select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+#updateUserForm input[type="file"] {
+    margin-bottom: 15px;
+}
+
+#updateUserForm button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#updateUserForm button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
     </style>
 </head>
 <body>
@@ -214,20 +271,11 @@
                 <input type="text" id="guardianContactNumber" name="guardianContactNumber" required><br>
                 <label for="address">Address:</label>
                 <input type="text" id="address" name="address" required><br>
-                <label for="assignedRoomId">Assigned Room Id:</label>
-                <select id="assignedRoomId" name="assignedRoomId" required>
+                <label for="assignedRoomName">Assigned Room:</label>
+            <select id="assignedRoomName" name="assignedRoomName" required>
                 <option value="">Select a room</option>
-                <?php
-                $sql = "SELECT room_id, room_name FROM hostel";
-                $result = mysqli_query($link, $sql);
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<option value='". $row['room_id']. "'>". $row['room_name']. "</option>";
-                    }
-                } else {
-                    echo "<option value=''>No rooms found</option>";
-                }
-                ?>
+                <?php include 'get_rooms.php'; ?>
+            </select>
                 
                 <button type="submit">Update user details</button>
             </form>
@@ -235,87 +283,64 @@
             </div>
 
  </div>
+ </div>
+
+
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-$(document).ready(function() {
-    // Handle view/update button click
-    $('.update-user').click(function() {
-        var userId = $(this).data('user-id');
-        // AJAX call to fetch user details from the server
-        $.ajax({
-            url: 'fetch_resident_details.php',
-            method: 'POST',
-            data: {userId: userId},
-            dataType: 'json',
-            success: function(response) {
-                // Populate the form fields with fetched user details
-                $('#name').val(response.name);
-                $('#email').val(response.email);
-                $('#age').val(response.age);
-                $('#contactNumber').val(response.contact_number);
-                $('#guardianName').val(response.guardian_name);
-                $('#guardianContactNumber').val(response.guardian_contact_number);
-                $('#address').val(response.address);
-                $('#assignedRoomId').val(response.assigned_room_id);
-                
-                // Display the overlay
-                $('.overlay').show();
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-            }
-        });
-    });
 
-    // Handle form submission when Add User button is clicked
-    $('#addUserForm').on('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-
-        // Collect form data
-        var formData = new FormData(this);
-
-        // Send form data to add_user.php using AJAX
-        $.ajax({
-            url: 'add_user.php',
-            method: 'POST',
-            data: formData,
-            processData: false, // Prevent jQuery from automatically transforming the data into a query string
-            contentType: false, // Prevent jQuery from setting the Content-Type header
-            success: function(response) {
-                console.log(response); // Log the response for debugging purposes
-                // Optionally, you can redirect to another page or display a success message here
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText); // Log the error response for debugging purposes
-                // Optionally, you can display an error message here
-            }
-        });
-    });
-});
-
-function openEditUserOverlay(userId, name, email, age, contactNumber, guardianName, guardianContactNumber, address, assignedRoomId) {
-    // Populate the form fields with existing user details
-    document.getElementById('name').value = name;
-    document.getElementById('email').value = email;
-    document.getElementById('age').value = age;
-    document.getElementById('contactNumber').value = contactNumber;
-    document.getElementById('guardianName').value = guardianName;
-    document.getElementById('guardianContactNumber').value = guardianContactNumber;
-    document.getElementById('address').value = address;
-
-    // Select the assigned room id in the dropdown
-    var assignedRoomDropdown = document.getElementById('assignedRoomId');
-    for (var i = 0; i < assignedRoomDropdown.options.length; i++) {
-        if (assignedRoomDropdown.options[i].value === assignedRoomId) {
-            assignedRoomDropdown.selectedIndex = i;
+// Function to open the edit user overlay
+function openEditUserOverlay(userId, name, email, age, contactNumber, guardianName, guardianContactNumber, address, assignedRoomName, assignedRoomId) {
+    // Set values in the form fields
+    document.getElementById("userId").value = userId; // Add hidden field for user ID
+    document.getElementById("name").value = name;
+    document.getElementById("email").value = email;
+    document.getElementById("age").value = age;
+    document.getElementById("contactNumber").value = contactNumber;
+    document.getElementById("guardianName").value = guardianName;
+    document.getElementById("guardianContactNumber").value = guardianContactNumber;
+    document.getElementById("address").value = address;
+    
+    // Find the assigned room select element
+    var assignedRoomSelect = document.getElementById("assignedRoomId");
+    
+    // Loop through options to find the one with the assigned room name
+    for (var i = 0; i < assignedRoomSelect.options.length; i++) {
+        if (assignedRoomSelect.options[i].text === assignedRoomName) {
+            assignedRoomSelect.selectedIndex = i;
             break;
         }
     }
 
     // Display the overlay
-    document.querySelector('.overlay').style.display = 'block';
+    document.querySelector('.overlay').style.display = 'flex';
 }
+
+// Add event listener to the View/Update buttons with class 'btn btn-primary update-user'
+document.addEventListener('DOMContentLoaded', function () {
+    var updateButtons = document.querySelectorAll('.btn.btn-primary.update-user');
+    updateButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            var userId = this.getAttribute('data-user-id');
+            var name = this.getAttribute('data-name');
+            var email = this.getAttribute('data-email');
+            var age = this.getAttribute('data-age');
+            var contactNumber = this.getAttribute('data-contact-number');
+            var guardianName = this.getAttribute('data-guardian-name');
+            var guardianContactNumber = this.getAttribute('data-guardian-contact-number');
+            var address = this.getAttribute('data-address');
+            var assignedRoomName = this.getAttribute('data-assigned-room-name');
+            var assignedRoomId = this.getAttribute('data-assigned-room-id');
+            openEditUserOverlay(userId, name, email, age, contactNumber, guardianName, guardianContactNumber, address, assignedRoomName, assignedRoomId);
+        });
+    });
+
+    // Add event listener to the close button
+    document.querySelector('.close').addEventListener('click', closeOverlay);
+});
+
+
 </script>
 
 
