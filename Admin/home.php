@@ -122,9 +122,9 @@
 
 
             // Add event listener to the logout link
-    document.getElementById('logout').addEventListener('click', function() {
+        document.getElementById('logout').addEventListener('click', function() {
         // Show a confirmation dialog
-        if (confirm('Are you sure you want to logout?')) {
+        if (confirm('Are you sure you want to logout?\nThis will redirect you to the login page.')) {
             // If user clicks OK, redirect to adminLogin.php
             window.location.href = 'adminLogin.php';
         } else {
