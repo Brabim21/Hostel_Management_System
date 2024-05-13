@@ -34,16 +34,21 @@
                 $roomCountQuery = "SELECT COUNT(*) AS totalRooms FROM hostel";
                 $staffCountQuery = "SELECT COUNT(*) AS totalStaff FROM staff";
                 $residentCountQuery = "SELECT COUNT(*) AS totalResidents FROM user";
+                $residentPayementQuery = "SELECT SUM(received_amount) AS totalPayments FROM billing";
+               
 
                 // Execute queries
                 $roomCountResult = mysqli_query($link, $roomCountQuery);
                 $staffCountResult = mysqli_query($link, $staffCountQuery);
                 $residentCountResult = mysqli_query($link, $residentCountQuery);
+                $residentPaymentResult = mysqli_query($link, $residentPayementQuery);
 
                 // Fetch counts
                 $roomCount = mysqli_fetch_assoc($roomCountResult)['totalRooms'];
                 $staffCount = mysqli_fetch_assoc($staffCountResult)['totalStaff'];
                 $residentCount = mysqli_fetch_assoc($residentCountResult)['totalResidents'];
+                $paymentCount = mysqli_fetch_assoc($residentPaymentResult)['totalPayments'];
+
             ?>
 
             <div class="info-box">
@@ -66,7 +71,8 @@
 
             <div class="info-box">
                 <h2>Total Billing</h2>
-                <p class="total-payment">Total Amount: $5000</p>
+                <p class="total-payment">Total Amount:<?php echo $paymentCount; ?></p>
+
                 <img src="image/Payment.png" alt="Billing Image">
             </div>
         </div>

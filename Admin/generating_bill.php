@@ -1,98 +1,76 @@
+<style>
+    /* Style for the bill */
+.bill {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #333;
+    font-family: Arial, sans-serif;
+}
+
+.bill h1 {
+    text-align: center;
+}
+
+.bill p {
+    margin: 10px 0;
+}
+
+/* Style for the download button */
+.download-btn {
+    display: block;
+    width: 120px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+</style>
+
 <?php
+// Include database connection and setup
 include_once "../configuration.php";
 
-// Function to fetch user details
-function getUserDetails($userId)
-{
-    global $link;
-    $sql = "SELECT * FROM user WHERE user_id = '$userId'";
-    $result = mysqli_query($link, $sql);
-    return mysqli_fetch_assoc($result);
-}
+// Check if billing_id is provided in the URL
+if(isset($_GET['billing_id'])) {
+    // Sanitize the input to prevent SQL injection
+    $billing_id = mysqli_real_escape_string($link, $_GET['billing_id']);
 
-// Function to fetch room details
-function getRoomDetails($roomId)
-{
-    global $link;
-    $sql = "SELECT * FROM hostel WHERE room_id = '$roomId'";
-    $result = mysqli_query($link, $sql);
-    return mysqli_fetch_assoc($result);
-}
+    // Query to fetch billing details based on billing_id
+    $query = "SELECT b.*, u.name AS user_name, u.assigned_room_name AS room_name
+              FROM billing b
+              INNER JOIN user u ON b.user_id = u.user_id
+              WHERE b.billing_id = '$billing_id'";
+    $result = mysqli_query($link, $query);
 
-// Search functionality
-if (isset($_GET['search'])) {
-    $searchQuery = $_GET['search'];
-    $sql = "SELECT * FROM user WHERE name LIKE '%$searchQuery%'";
-    $result = mysqli_query($link, $sql);
-    $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    if(mysqli_num_rows($result) == 1) {
+        // Fetch the billing details
+        $row = mysqli_fetch_assoc($result);
+
+        // Generate the bill HTML
+        $billHTML = "<div class='bill'>";
+        $billHTML .= "<h1>Bill for Billing ID: " . $row['billing_id'] . "</h1>";
+        $billHTML .= "<p>User: " . $row['user_name'] . "</p>";
+        $billHTML .= "<p>Room Name: " . $row['room_name'] . "</p>";
+        $billHTML .= "<p>Total Fee: $" . $row['total_fee'] . "</p>";
+        $billHTML .= "<p>Received Amount: $" . $row['received_amount'] . "</p>";
+        $billHTML .= "<p>Pending Amount: $" . $row['pending_amount'] . "</p>";
+        $billHTML .= "<p>Bill Date: " . $row['bill_date'] . "</p>";
+        $billHTML .= "</div>";
+
+        // Output the bill HTML
+        echo $billHTML;
+
+        // Add download button for PDF
+        echo "<a href='generate_pdf.php?billing_id=$billing_id' class='download-btn'>Download Bill PDF</a>";
+    } else {
+        echo "Billing ID not found!";
+    }
+} else {
+    echo "Billing ID not provided!";
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Generate Bill</title>
-    <style>
-        /* Add your CSS styles here */
-    </style>
-</head>
-<body>
-    <h1>Generate Bill</h1>
-
-    <!-- Search bar -->
-    <form method="GET" action="">
-        <input type="text" name="search" placeholder="Search resident name" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
-        <button type="submit">Search</button>
-    </form>
-
-    <!-- Display search results -->
-    <?php if (isset($users)) : ?>
-        <ul>
-            <?php foreach ($users as $user) : ?>
-                <li>
-                    <?php echo $user['name']; ?>
-                    <button onclick="generateBill(<?php echo $user['user_id']; ?>, <?php echo $user['assigned_room_id']; ?>)">Generate Bill</button>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php endif; ?>
-
-    <!-- Bill generation form -->
-    <div id="billForm" style="display: none;">
-        <h2>Generate Bill</h2>
-        <form id="billFormData" method="post" action="generate_bill.php">
-            <input type="hidden" id="userId" name="userId">
-            <input type="hidden" id="roomId" name="roomId">
-            <label for="roomFee">Room Fee:</label>
-            <input type="text" id="roomFee" name="roomFee" readonly>
-            <br>
-            <label for="additionalExpense1">Additional Expense 1:</label>
-            <input type="text" id="additionalExpense1" name="additionalExpense1">
-            <br>
-            <label for="additionalExpense2">Additional Expense 2:</label>
-            <input type="text" id="additionalExpense2" name="additionalExpense2">
-            <br>
-            <button type="submit">Generate Bill</button>
-        </form>
-    </div>
-
-    <script>
-        function generateBill(userId, roomId) {
-            // Fetch user details
-            var userDetails = <?php echo json_encode(getUserDetails($userId)); ?>;
-            var roomDetails = <?php echo json_encode(getRoomDetails($roomId)); ?>;
-
-            // Populate form fields
-            document.getElementById('userId').value = userId;
-            document.getElementById('roomId').value = roomId;
-            document.getElementById('roomFee').value = roomDetails.room_price;
-
-            // Show the bill form
-            document.getElementById('billForm').style.display = 'block';
-        }
-    </script>
-</body>
-</html>
-
-
-

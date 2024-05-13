@@ -227,6 +227,20 @@
             overflow-x: hidden; /* Hide the horizontal scroll */
         }
 
+        #password {
+        position: relative;
+        width: 100%;
+        padding-right: 30px; /* To accommodate space for the checkbox */
+    }
+
+    /* Style for the "Show Password" checkbox */
+    #showPasswordCheckbox {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
     </style>
 </head>
 <body>
@@ -321,8 +335,7 @@
                 <h2>Edit Staff Details</h2>
                 <!-- Form for updating staff details -->
                 <form id="updateForm" action="updatestaff.php" method="post">
-                    <!-- Input fields for updating staff details -->
-                    <!-- Populate these fields with existing staff details -->
+
                     <input type="hidden" id="staffId" name="staffId">
                     <label for="firstName">First Name:</label>
                     <input type="text" id="firstName" name="firstName" required><br>
@@ -332,10 +345,13 @@
                     <input type="number" id="age" name="age" required><br>
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required><br>
-                    <label for="email">Password:</label>
-                    <input type="password" id="password" name="password" required><br>
                     <label for="contactNumber">Contact Number:</label>
                     <input type="text" id="contactNumber" name="contactNumber" required><br>
+                    <div style="position: relative;">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                        <input type="checkbox" id="showPasswordCheckbox">
+                    </div>
                     <label for="address">Address:</label>
                     <input type="text" id="address" name="address" required><br>
                     <!-- Submit button for updating staff details -->
@@ -346,13 +362,22 @@
 
         <!-- JavaScript for overlay functionality -->
         <script>
-            function openEditOverlay(staffId, firstName, lastName, age, email, contactNumber, address) {
+                document.getElementById("showPasswordCheckbox").addEventListener("change", function() {
+                var passwordField = document.getElementById("password");
+                if (this.checked) {
+                    passwordField.type = "text";
+                } else {
+                    passwordField.type = "password";
+                }
+    });
+            function openEditOverlay(staffId, firstName, lastName, age, email,password,contactNumber, address) {
                 // Populate the form fields with existing staff details
                 document.getElementById('staffId').value = staffId;
                 document.getElementById('firstName').value = firstName;
                 document.getElementById('lastName').value = lastName;
                 document.getElementById('age').value = age;
                 document.getElementById('email').value = email;
+                document.getElementById('password').value = password;
                 document.getElementById('contactNumber').value = contactNumber;
                 document.getElementById('address').value = address;
 

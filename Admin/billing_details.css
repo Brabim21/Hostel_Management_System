@@ -58,79 +58,58 @@ nav ul li a:hover .logo {
     padding: 20px;
 }
 
-.search-container {
-    margin-bottom: 20px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-#paymentTable {
+nav {
+    background-color: #333;
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.billing-table {
+    margin: 20px;
+    padding: 20px;
+    margin-left: 250px;
+}
+
+.billing-table table {
     width: 100%;
     border-collapse: collapse;
 }
 
-#paymentTable th,
-#paymentTable td {
+.billing-table th, .billing-table td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
 }
 
-#paymentTable th {
+.billing-table th {
     background-color: #f2f2f2;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th,
-td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
+.billing-table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
+.billing-table tbody tr:hover {
+    background-color: #ddd;
 }
-
-.received-amount {
-    color: green;
-}
-
-.pending-amount {
-    color: red;
-}
-
-.total-row {
-    background-color: #ffc107;
-    color: blue; /* Change the color of the total amount here */
-}
-
-.pagination {
-    margin-top: 20px;
-}
-
-.pagination button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.pagination button:hover {
-    background-color: #555;
-}
-
-.pagination button:disabled {
-    background-color: #888;
-    cursor: not-allowed;
-}
-
-

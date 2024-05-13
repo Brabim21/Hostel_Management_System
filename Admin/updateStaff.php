@@ -10,8 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastName = $_POST['lastName'];
     $age = $_POST['age'];
     $email = $_POST['email'];
-    $contactNumber = $_POST['contactNumber'];
     $password = $_POST['password'];
+    $contactNumber = $_POST['contactNumber'];
     $address = $_POST['address'];
 
     // Update staff details in the database

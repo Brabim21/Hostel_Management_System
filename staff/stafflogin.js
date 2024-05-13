@@ -1,9 +1,9 @@
-document.getElementById("showPasswordCheckbox").addEventListener("change", () => {
+document.getElementById("showPasswordCheckbox").addEventListener("change", function() {
     const passwordField = document.getElementById("password");
     passwordField.type = this.checked ? "text" : "password";
 });
 
-document.getElementById("login-form").addEventListener("submit", async (event) => {
+document.getElementById("login-form").addEventListener("submit", async function(event) {
     event.preventDefault(); // Prevent the default form submission
 
     const username = document.getElementById("username").value.trim();
@@ -33,9 +33,9 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
 
     // Check if the response exactly matches "success"
     if (response === "success") {
-        // If login is successful, redirect to dashboard
+        // If login is successful, redirect to home.php
         alert("Login successful. Redirecting to dashboard.");
-        window.location.href = "dashboard.php";
+        window.location.href = "home.php";
     } else {
         alert("Incorrect username or password. Please try again.");
     }
@@ -44,10 +44,9 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
 // Simulated login function for demonstration purposes
 async function simulateLogin(username, password) {
     // Simulate server-side validation
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
     // Simulate response (replace with actual AJAX request in production)
     const success = true; // Simulate successful login for demonstration
     return success ? "success" : "error";
 }
-

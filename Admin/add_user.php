@@ -5,7 +5,7 @@ include '../configuration.php';
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
-    $fullName = mysqli_real_escape_string($link, $_POST['fullName']);
+    $name = mysqli_real_escape_string($link, $_POST['name']);
     $email = mysqli_real_escape_string($link, $_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash password
     $age = mysqli_real_escape_string($link, $_POST['age']);
@@ -28,16 +28,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         move_uploaded_file($_FILES['citizenshipBack']['tmp_name'], $citizenshipBackPath);
     }
 
-    // Insert resident details into the database using prepared statement
+    // Insert user details into the database using prepared statement
     $insertSql = "INSERT INTO user (name, email, password, age, contact_number, citizenship_front, citizenship_back, address, guardian_name, guardian_contact_number) 
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     $stmt = mysqli_prepare($link, $insertSql);
-    mysqli_stmt_bind_param($stmt, "sssissssss", $fullName, $email, $password, $age, $contactNumber, $citizenshipFrontPath, $citizenshipBackPath, $address, $guardianName, $guardianContactNumber);
+    mysqli_stmt_bind_param($stmt, "sssissssss", $name, $email, $password, $age, $contactNumber, $citizenshipFrontPath, $citizenshipBackPath, $address, $guardianName, $guardianContactNumber);
 
     if (mysqli_stmt_execute($stmt)) {
         // Insert successful
         echo "User added successfully.";
+
     } else {
         // Insert failed
         echo "Error: " . mysqli_error($link);
@@ -45,7 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Close statement
     mysqli_stmt_close($stmt);
-    // Close the database connection
-    mysqli_close($link);
 }
+
+// Close the database connection
+mysqli_close($link);
 ?>
