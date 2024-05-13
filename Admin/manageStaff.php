@@ -8,66 +8,224 @@
             max-width: 50px;
             max-height: 50px;
         }
-/* General styles for the form container */
-.add-staff {
-    width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+        /* General styles for the form container */
+        .add-staff {
+            width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-/* Heading style */
-.add-staff h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
+        /* Heading style */
+        .add-staff h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-/* Form row layout */
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
+        /* Form row layout */
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
 
-/* Half-width elements */
-.half-width {
-    width: 48%; /* Adjust for spacing */
-}
+        /* Half-width elements */
+        .half-width {
+            width: 48%; /* Adjust for spacing */
+        }
 
-/* Label styles */
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #666;
-}
+        /* Label styles */
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
 
-/* Input and button styles */
-input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+        /* Input and button styles */
+        input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
-button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-}
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
 
+        /* Modal styles */
+        .modal {
+            display: none; /* Initially hidden */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+            overflow: auto; /* Enable scrolling if needed */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Modal content styles */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+            text-align: center; /* Center the buttons */
+        }
+
+        /* Close button styles */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        /* Delete button styles */
+        .delete-button {
+            background-color: #dc3545;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+
+        /* Overlay styles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Overlay content styles */
+        
+        .overlay-content {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            height: 80%; /* Adjust the height as needed */
+            max-height: 700px; /* Maximum height */
+            width: 80%; /* Adjust width as needed */
+            max-width: 500px; /* Maximum width */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: fixed; /* Position the overlay content relative to the viewport */
+            top: 50%; /* Align the top edge of the content to the vertical center */
+            left: 50%; /* Align the left edge of the content to the horizontal center */
+            transform: translate(-50%, -50%); /* Move the content back by half of its own width and height */
+            text-align: left; /* Left align the content */
+            overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+            margin: auto; /* Center horizontally */
+        }
+
+
+
+        /* Close button styles */
+        .close {
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Heading style */
+        .overlay-content h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Form and input styles */
+        #updateForm {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #updateForm label {
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        #updateForm input[type="text"], 
+        #updateForm input[type="email"], 
+        #updateForm input[type="password"], 
+        #updateForm input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        #updateForm button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #updateForm button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #middle {
+            width: 100%;
+            height: 100px; /* Adjust based on your needs */
+            overflow-y: auto; /* Trigger vertical scroll */
+            overflow-x: hidden; /* Hide the horizontal scroll */
+        }
 
     </style>
 </head>
@@ -85,7 +243,8 @@ button[type="submit"]:hover {
             <li><a href="manage_resident.php">Residents</a></li>
             <li><a href="billing_details.php">Billing Details</a></li>
             <li><a href="manage_payment.php">Payment Info</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="chat.php">Chat</a></li>
+            <li><a href="#" id="logout">Logout</a></li>
         </ul>
     </nav>
     <div class="content">
@@ -155,65 +314,6 @@ button[type="submit"]:hover {
             </div>
         </div>
 
-    <style>
-        /* Modal styles */
-.modal {
-    display: none; /* Initially hidden */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
-    overflow: auto; /* Enable scrolling if needed */
-    justify-content: center;
-    align-items: center;
-}
-
-/* Modal content styles */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 500px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    position: relative;
-    text-align: center; /* Center the buttons */
-}
-
-/* Close button styles */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    color: #aaa;
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-}
-
-/* Delete button styles */
-.delete-button {
-    background-color: #dc3545;
-    color: #fff;
-    margin-top: 10px;
-}
-
-.delete-button:hover {
-    background-color: #c82333;
-}
-
-    </style>
-
         <!-- Update overlay modal -->
         <div id="editOverlay" class="overlay">
             <div class="overlay-content">
@@ -243,105 +343,6 @@ button[type="submit"]:hover {
                 </form>
             </div>
         </div>
-
-<!-- Pop up for this edit table  -->
-
-<style>
-    /* Overlay styles */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none; /* Initially hidden */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-/* Overlay content styles */
-.overlay-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 500px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    height: 70vh; /* Set a specific height, adjust as needed */
-    overflow-y: auto; /* Enable vertical scrolling */
-}
-
-
-/* Close button styles */
-.close {
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Heading style */
-.overlay-content h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Form and input styles */
-#updateForm {
-    display: flex;
-    flex-direction: column;
-}
-
-#updateForm label {
-    margin-bottom: 5px;
-    color: #666;
-}
-
-#updateForm input[type="text"], 
-#updateForm input[type="email"], 
-#updateForm input[type="password"], 
-#updateForm input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-}
-
-#updateForm button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-#updateForm button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-#middle {
-    width: 100%;
-    height: 100px; /* Adjust based on your needs */
-    overflow-y: auto; /* Trigger vertical scroll */
-    overflow-x: hidden; /* Hide the horizontal scroll */
-}
-
-</style>
-
 
         <!-- JavaScript for overlay functionality -->
         <script>
@@ -380,77 +381,75 @@ button[type="submit"]:hover {
                 document.getElementById(modalId).style.display = 'none';
             }
 
-                // Add event listener to the logout link
-    document.getElementById('logout').addEventListener('click', function() {
-        // Show a confirmation dialog
-        if (confirm('Are you sure you want to logout?')) {
-            // If user clicks OK, redirect to adminLogin.php
-            window.location.href = 'adminLogin.php';
-        } else {
-            // If user clicks Cancel, do nothing
-            return false;
-        }
-    });
+            // Add event listener to the logout link
+            document.getElementById('logout').addEventListener('click', function() {
+                // Show a confirmation dialog
+                if (confirm('Are you sure you want to logout?')) {
+                    // If user clicks OK, redirect to adminLogin.php
+                    window.location.href = 'adminLogin.php';
+                } else {
+                    // If user clicks Cancel, do nothing
+                    return false;
+                }
+            });
         </script>
 
         <!-- Add Staff Form -->
-<!-- Add Staff Form -->
-<div class="add-staff">
-    <h2>Add Staff</h2>
-    <form id="addStaffForm" action="addstaff.php" method="post" enctype="multipart/form-data">
-        <div class="form-row">
-            <div class="half-width">
-                <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" required>
-            </div>
-            <div class="half-width">
-                <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" required>
-            </div>
+        <div class="add-staff">
+            <h2>Add Staff</h2>
+            <form id="addStaffForm" action="addstaff.php" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="half-width">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="half-width">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="half-width">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="half-width">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="half-width">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                    <div class="half-width">
+                        <label for="citizenship">Citizenship Front:</label>
+                        <input type="file" id="citizenship" name="citizenship" accept="image/*" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="half-width">
+                        <label for="citizenship-back">Citizenship Back:</label>
+                        <input type="file" id="citizenship-back" name="citizenshipBack" accept="image/*" required>
+                    </div>
+                    <div class="half-width">
+                        <label for="contactNumber">Contact Number:</label>
+                        <input type="text" id="contactNumber" name="contactNumber" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+
+                <button type="submit">Add Staff</button>
+            </form>
         </div>
-
-        <div class="form-row">
-            <div class="half-width">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="half-width">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="half-width">
-                <label for="age">Age:</label>
-                <input type="number" id="age" name="age" required>
-            </div>
-            <div class="half-width">
-                <label for="citizenship">Citizenship Front:</label>
-                <input type="file" id="citizenship" name="citizenship" accept="image/*" required>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="half-width">
-                <label for="citizenship-back">Citizenship Back:</label>
-                <input type="file" id="citizenship-back" name="citizenshipBack" accept="image/*" required>
-            </div>
-            <div class="half-width">
-                <label for="contactNumber">Contact Number:</label>
-                <input type="text" id="contactNumber" name="contactNumber" required>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" required>
-        </div>
-
-        <button type="submit">Add Staff</button>
-    </form>
-</div>
-
-
+    </div>
 </body>
 </html>

@@ -21,6 +21,7 @@
             <li><a href="#">Residents</a></li>
             <li><a href="billing_details.php">Billing Details</a></li>
             <li><a href="manage_payment.php">Payment Info</a></li>
+            <li><a href="chat.php">Chat</a></li>
             <li><a href="#" id = "logout">Logout</a></li>
         </ul>
     </nav>
@@ -83,10 +84,13 @@
                 </form>
             </div>
         </div>
-
+          <!-- Add Room button -->
+    <button id="addRoomButton">Add Room</button>
         <!-- Add Room section -->
 
-        <div id="addRoomSection">
+        <div id="addRoomSection" class="overlay">
+        <div class="overlay-content">
+            <span class="close" onclick="closeOverlay('addRoomSection')">&times;</span>
             <h2>Add Room</h2>
             <form id="addRoomForm" method="post" action="add_room.php">
                 <label for="roomName">Room Name:</label>
@@ -98,6 +102,7 @@
                 <button type="submit">Add Room</button>
             </form>
         </div>
+    </div>
 
         <!-- Delete confirmation modal -->
         <div id="deleteModal" class="modal">
@@ -125,7 +130,11 @@
             }
         });
     });
-
+     // Add event listener to the "Add Room" button
+     document.getElementById('addRoomButton').addEventListener('click', function() {
+            // Display the "Add Room" section as a pop-up
+            document.getElementById('addRoomSection').style.display = 'block';
+        });
   
 
     function openEditOverlay(roomId, roomName, roomPrice, facility, residentCount) {

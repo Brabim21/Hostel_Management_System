@@ -57,6 +57,8 @@ nav ul li a:hover .logo {
     margin-left: 220px; /* Adjust based on nav width */
     padding: 20px;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .admin-profile {

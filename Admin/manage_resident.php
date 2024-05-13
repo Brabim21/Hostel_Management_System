@@ -95,6 +95,7 @@
             <li><a href="#">Residents</a></li>
             <li><a href="billing_details.php">Billing Details</a></li>
             <li><a href="manage_payment.php">Payment Info</a></li>
+            <li><a href="chat.php">Chat</a></li>
             <li><a href="#">Logout</a></li>
         </ul>
     </nav>

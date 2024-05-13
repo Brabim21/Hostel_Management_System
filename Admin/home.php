@@ -21,6 +21,7 @@
             <li><a href="manage_resident.php">Residents</a></li>
             <li><a href="billing_details.php">Billing Details</a></li>
             <li><a href="manage_payment.php">Payment Info</a></li>
+            <li><a href="chat.php">Chat</a></li>
             <li><a href="#" id = "logout">Logout</a></li>
         </ul>
     </nav>

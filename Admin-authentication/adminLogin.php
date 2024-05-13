@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="adminlogin">
 
     <p class="login-text">Admin Login Page</p>
     <div class="line"></div>
@@ -27,8 +27,7 @@
 
     <button type="submit" id="sign-in">Sign in</button>
 
-    <!-- Forgot Password link -->
-    <a href="./forgotpassword.php" id="forgot-password">Forgot Password?</a>
+   
    
   </div>
 </body>

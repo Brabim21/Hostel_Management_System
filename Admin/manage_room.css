@@ -65,6 +65,7 @@ h1 {
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 20px; /* Add space between table and button */
 }
 
 th, td {
@@ -95,6 +96,7 @@ button:hover {
     background-color: #555;
 }
 
+/* CSS for the overlay and overlay content */
 .overlay {
     display: none;
     position: fixed;
@@ -115,6 +117,15 @@ button:hover {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* CSS for the close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .modal {
@@ -147,31 +158,36 @@ button:hover {
     cursor: pointer;
 }
 
-/* css for add staff */
+/* CSS for add staff form */
+form {
+    max-width: 600px; /* Adjusted width */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+label {
+    display: block;
+    margin-bottom: 10px;
+}
 
-        form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-        input[type="text"],
-        textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        textarea {
-            resize: vertical;
-            height: 100px; /* Adjust height as needed */
-        }
-        /* CSS to make facility input box larger */
-        #facility {
-            height: 150px; /* Increase height for multiple facilities */
-        }
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px; /* Adjust height as needed */
+}
+
+/* CSS to make facility input box larger */
+#facility {
+    height: 150px; /* Increase height for multiple facilities */
+}
