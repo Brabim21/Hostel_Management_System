@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hostel Management System - Resident Page</title>
+    <title>Hostel Management System - Chat-Page</title>
     <link rel="stylesheet" href="chat.css">
 </head>
 <body>
@@ -11,33 +11,260 @@
         <ul>
             <li>
                 <a href="#">
-                    <img src="Hostel.avif" alt="Hostel Logo" class="logo">
+                    <img src="image/Hostel.avif" alt="Hostel Logo" class="logo">
                     Dashboard
                 </a>
             </li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Book Facilities</a></li>
-            <li><a href="#">My Payments</a></li>
-            <li><a href="#">Maintenance Requests</a></li>
-            <li><a href="#">Notifications</a></li>
-            <li><a href="#">Chats</a></li>
+            <li><a href="#">Rooms</a></li>
+            <li><a href="#">Staff</a></li>
+            <li><a href="#">Residents</a></li>
+            <li><a href="#">Billing Details</a></li>
+            <li><a href="#">Payment Info</a></li>
+            <li><a href="#">Chat</a></li>
             <li><a href="#">Logout</a></li>
         </ul>
     </nav>
+    
 
-    <div class="container">
-        <h1>Chat with Admin</h1>
-        <div class="chat-box">
-            <!-- Past Conversations -->
-            <div class="chat-message">Hello! How can I assist you today?</div>
-            <div class="chat-message">I have some feedback regarding the cleanliness of the common area.</div>
-            <div class="chat-message">Sure, I'll forward your feedback to the maintenance team.</div>
-            <!-- End of Past Conversations -->
+        <div class="wrapper">
+            <div class="container">
+                <div class="left">
+                    <div class="top">
+                        <input type="text" placeholder="Search" />
+                        <a href="javascript:;" class="search"></a>
+                    </div>
+                    <ul class="people">
+                        <li class="person" data-chat="person1">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
+                            <span class="name">Thomas Bangalter</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">I was wondering...</span>
+                        </li>
+                        <li class="person" data-chat="person2">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/dog.png" alt="" />
+                            <span class="name">Dog Woofson</span>
+                            <span class="time">1:44 PM</span>
+                            <span class="preview">I've forgotten how it felt before</span>
+                        </li>
+                        <li class="person" data-chat="person3">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/louis-ck.jpeg" alt="" />
+                            <span class="name">Louis CK</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">But we’re probably gonna need a new carpet.</span>
+                        </li>
+                        <li class="person" data-chat="person4">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/bo-jackson.jpg" alt="" />
+                            <span class="name">Bo Jackson</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">It’s not that bad...</span>
+                        </li>
+                        <li class="person" data-chat="person5">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/michael-jordan.jpg" alt="" />
+                            <span class="name">Michael Jordan</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">Wasup for the third time like is 
+        you blind </span>
+                        </li>
+                        <li class="person" data-chat="person6">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/drake.jpg" alt="" />
+                            <span class="name">Drake</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">howdoyoudoaspace</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div class="top"><span>To: <span class="name">Dog Woofson</span></span></div>
+                    <div class="chat" data-chat="person1">
+                        <div class="conversation-start">
+                            <span>Today, 6:48 AM</span>
+                        </div>
+                        <div class="bubble you">
+                            Hello,
+                        </div>
+                        <div class="bubble you">
+                            it's me.
+                        </div>
+                        <div class="bubble you">
+                            I was wondering...
+                        </div>
+                    </div>
+                    <div class="chat" data-chat="person2">
+                        <div class="conversation-start">
+                            <span>Today, 5:38 PM</span>
+                        </div>
+                        <div class="bubble you">
+                            Hello, can you hear me?
+                        </div>
+                        <div class="bubble you">
+                            I'm in California dreaming
+                        </div>
+                        <div class="bubble me">
+                            ... about who we used to be.
+                        </div>
+                        <div class="bubble me">
+                            Are you serious?
+                        </div>
+                        <div class="bubble you">
+                            When we were younger and free...
+                        </div>
+                        <div class="bubble you">
+                            I've forgotten how it felt before
+                        </div>
+                    </div>
+                    <div class="chat" data-chat="person3">
+                        <div class="conversation-start">
+                            <span>Today, 3:38 AM</span>
+                        </div>
+                        <div class="bubble you">
+                            Hey human!
+                        </div>
+                        <div class="bubble you">
+                            Umm... Someone took a shit in the hallway.
+                        </div>
+                        <div class="bubble me">
+                            ... what.
+                        </div>
+                        <div class="bubble me">
+                            Are you serious?
+                        </div>
+                        <div class="bubble you">
+                            I mean...
+                        </div>
+                        <div class="bubble you">
+                            It’s not that bad...
+                        </div>
+                        <div class="bubble you">
+                            But we’re probably gonna need a new carpet.
+                        </div>
+                    </div>
+                    <div class="chat" data-chat="person4">
+                        <div class="conversation-start">
+                            <span>Yesterday, 4:20 PM</span>
+                        </div>
+                        <div class="bubble me">
+                            Hey human!
+                        </div>
+                        <div class="bubble me">
+                            Umm... Someone took a shit in the hallway.
+                        </div>
+                        <div class="bubble you">
+                            ... what.
+                        </div>
+                        <div class="bubble you">
+                            Are you serious?
+                        </div>
+                        <div class="bubble me">
+                            I mean...
+                        </div>
+                        <div class="bubble me">
+                            It’s not that bad...
+                        </div>
+                    </div>
+                    <div class="chat" data-chat="person5">
+                        <div class="conversation-start">
+                            <span>Today, 6:28 AM</span>
+                        </div>
+                        <div class="bubble you">
+                            Wasup
+                        </div>
+                        <div class="bubble you">
+                            Wasup
+                        </div>
+                        <div class="bubble you">
+                            Wasup for the third time like is <br />you blind bitch
+                        </div>
+    
+                    </div>
+                    <div class="chat" data-chat="person6">
+                        <div class="conversation-start">
+                            <span>Monday, 1:27 PM</span>
+                        </div>
+                        <div class="bubble you">
+                            So, how's your new phone?
+                        </div>
+                        <div class="bubble you">
+                            You finally have a smartphone :D
+                        </div>
+                        <div class="bubble me">
+                            Drake?
+                        </div>
+                        <div class="bubble me">
+                            Why aren't you answering?
+                        </div>
+                        <div class="bubble you">
+                            howdoyoudoaspace
+                        </div>
+                    </div>
+                    <div class="write">
+                        <a href="javascript:;" class="write-link attach"></a>
+                        <input type="text" />
+                        <a href="javascript:;" class="write-link smiley"></a>
+                        <a href="javascript:;" class="write-link send"></a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="input-box">
-            <textarea placeholder="Type your message..."></textarea>
-            <button>Send</button>
-        </div>
-    </div>
+        
+
+    <script>
+        // JavaScript code for hover effect
+const infoBoxes = document.querySelectorAll('.info-box');
+const graphBoxes = document.querySelectorAll('.graph-box');
+
+infoBoxes.forEach(box => {
+    box.addEventListener('mouseenter', () => {
+        box.style.transform = 'scale(1.1)';
+    });
+
+    box.addEventListener('mouseleave', () => {
+        box.style.transform = 'scale(1)';
+    });
+});
+
+graphBoxes.forEach(box => {
+    box.addEventListener('mouseenter', () => {
+        box.style.transform = 'scale(1.1)';
+    });
+
+    box.addEventListener('mouseleave', () => {
+        box.style.transform = 'scale(1)';
+    });
+});
+document.querySelector('.chat[data-chat="person2"]').classList.add('active-chat');
+    document.querySelector('.person[data-chat="person2"]').classList.add('active');
+    
+    let friends = {
+      list: document.querySelector('.left .people'),
+      all: document.querySelectorAll('.left .people .person'),
+      name: ''
+    };
+    
+    let chat = {
+      container: document.querySelector('.container .right'),
+      current: null,
+      person: null,
+      name: document.querySelector('.container .right .top .name')
+    };
+    
+    friends.all.forEach(f => {
+      f.addEventListener('mousedown', () => {
+        if (!f.classList.contains('active')) {
+          setActiveChat(f);
+        }
+      });
+    });
+    
+    function setActiveChat(f) {
+      friends.list.querySelector('.active').classList.remove('active');
+      f.classList.add('active');
+      chat.current = chat.container.querySelector('.active-chat');
+      chat.person = f.getAttribute('data-chat');
+      chat.current.classList.remove('active-chat');
+      chat.container.querySelector(`[data-chat="${chat.person}"]`).classList.add('active-chat');
+      friends.name = f.querySelector('.name').innerText;
+      chat.name.innerHTML = friends.name;
+    }
+    </script>
 </body>
 </html>
