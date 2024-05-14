@@ -35,7 +35,7 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
     if (response === "success") {
         // If login is successful, redirect to dashboard
         alert("Login successful. Redirecting to dashboard.");
-        window.location.href = "dashboard.php";
+        window.location.href = "home.php";
     } else {
         alert("Incorrect username or password. Please try again.");
     }
