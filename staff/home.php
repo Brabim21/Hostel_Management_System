@@ -92,11 +92,7 @@ $conn->close();
                 <img src="Icon.png" alt="Resident Image">
             </div>
 
-            <div class="info-box">
-                <h2>Total Tasks</h2>
-                <p id="taskCount">Task count</p>
-                <img src="Task.png" alt="Billing Image">
-            </div>
+        
         </div>
 
         <div class="graph-box-container">
