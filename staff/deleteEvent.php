@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['event_id']) && !empty(
 
     include '../configuration.php';
 
-    $sql = "DELETE FROM events WHERE id = ?";
+    $sql = "DELETE FROM events WHERE event_id = ?";
     $stmt = $link->prepare($sql);
     $stmt->bind_param("i", $event_id);
 
