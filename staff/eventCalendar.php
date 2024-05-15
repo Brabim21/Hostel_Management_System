@@ -206,13 +206,13 @@ nav ul li a:hover {
                         <p>Time: <?php echo date("g:i A", strtotime($event["event_time"])); ?></p>
                         <p>Description: <?php echo $event["description"]; ?></p>
                         <form method="post" action="deleteEvent.php">
-                            <input type="hidden" name="event_id" value="<?php echo $event['id']; ?>">
+                            <input type="hidden" name="event_id" value="<?php echo $event['event_id']; ?>">
                             <button type="submit" class="button">Delete Event</button>
                         </form>
                     </div>
                 <?php endforeach; ?>
             <?php else : ?>
-                <p>No events found.</p>
+                <p>No events found.</p>x
             <?php endif; ?>
             <!-- <div class="event">
                 <h3>Hostel BBQ Party</h3>
