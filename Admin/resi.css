@@ -1,0 +1,227 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for the top part containing the table */
+.top-part {
+    padding: 20px;
+    border-bottom: 2px solid #ccc;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+/* Style for the table */
+.table {
+    overflow-x: auto;
+}
+
+/* Style for the table itself */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table{
+
+    padding-top: 70px; /* Adjust this value based on the height of your navbar */
+    margin-left: 220px; /* Adjust based on nav width */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Style for table headers */
+table th {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* Style for table cells */
+table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* Style for even rows */
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Style for odd rows */
+table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+/* Hover effect for rows */
+table tr:hover {
+    background-color: #cce5ff;
+}
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.add-user {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form styling */
+#addUserForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-group input[type="file"] {
+    cursor: pointer;
+}
+
+/* Button styling */
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Overlay styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Set the overlay's width to cover the entire document */
+    height: 100vh; /* Set the overlay's height to cover the entire viewport */
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px); /* Add blur effect to the background */
+    display: none;
+    z-index: 100;
+
+}
+
+/* Form container styles */
+.update-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 50px auto; 
+    overflow-y: auto;
+}
+
+/* Form and input styles */
+#updateUserForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#updateUserForm label {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+#updateUserForm input[type="text"], 
+#updateUserForm input[type="email"], 
+#updateUserForm input[type="password"], 
+#updateUserForm input[type="number"], 
+#updateUserForm input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+#updateUserForm select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+#updateUserForm button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#updateUserForm button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 500px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    z-index: 101; /* Ensure it's above the overlay */
+}
+
+.close-btn:hover {
+    color: #ccc;
+    background-color: rgba(0, 0, 0, 0.5); /* Highlight background color */
+    border-radius: 50%; /* Makes the button circular */
+    padding: 5px; /* Adds padding to the button for better clickability */
+}
+
+
