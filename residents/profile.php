@@ -1,126 +1,121 @@
+<?php
+// Assuming you have already established a database connection
+
+include 'configuration.php';
+
+// Check if user is logged in
+session_start();
+if (!isset($_SESSION['email'])) {
+    header("location: ResidentLogin.php");
+    exit();
+}
+
+// Fetch user's data from the database based on their unique identifier (e.g., email)
+$email = $_SESSION['email'];
+$sql = "SELECT * FROM user WHERE email = ?";
+$stmt = mysqli_prepare($link, $sql);
+mysqli_stmt_bind_param($stmt, "s", $email);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+
+// Check if user exists
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    // Assign fetched data to variables
+    $name = $row['name'];
+    $password = $row['password']; // Note: You should never display the password in plain text, this is just an example
+    $age = $row['age'];
+    $contact_number = $row['contact_number'];
+    $citizenship_front = $row['citizenship_front'];
+    $citizenship_back = $row['citizenship_back'];
+    $guardian_name = $row['guardian_name'];
+    $guardian_contact_number = $row['guardian_contact_number'];
+    $address = $row['address'];
+}
+else {
+    // Handle case where user does not exist
+    echo "User not found";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile - Hostel Management System</title>
     <link rel="stylesheet" href="profile.css">
 </head>
 <body>
-    <nav>
+    
+<nav>
         <ul>
             <li>
-                <a href="#">
+                <a href="ResidentDash.php">
                     <img src="Hostel.avif" alt="Hostel Logo" class="logo">
                     Dashboard
                 </a>
             </li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Book Facilities</a></li>
-            <li><a href="#">My Payments</a></li>
-            <li><a href="#">Maintenance Requests</a></li>
-            <li><a href="#">Notifications</a></li>
-            <li><a href="#">Chats</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="PaymentResident.html">My Payments</a></li>
+            <li><a href="MainteneceRequest.html">Maintenance Requests</a></li>
+            <li><a href="chat.html">Chats</a></li> <!-- Redirect to chat.html -->
+            <li><a href="logout.php?logout=true">Logout</a></li>
+    
         </ul>
-    </nav>
+</nav>
+
     <div class="content">
         <h1>User Profile</h1>
-        <div class="profile">
-            <div class="profile-picture">
-                <!-- User's profile picture or avatar -->
-                <img src="user.png" alt="Profile Picture">
-            </div>
-            <div class="profile-details">
+        <div class="profile-details">
+            <form method="POST" action="update_profile.php">
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" value="John Doe">
+                    <input type="text" id="name" name="name" value="<?php echo $name; ?>">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="johndoe@example.com">
+                    <input type="email" id="email" name="email" value="<?php echo $email; ?>">
                 </div>
                 <div class="form-group">
-                    <label for="contact">Contact Number:</label>
-                    <input type="tel" id="contact" name="contact" value="+1234567890">
-                </div>
-                <div class="form-group">
-                    <label for="dob">Date of Birth:</label>
-                    <input type="text" id="dob" name="dob" value="January 1, 1990">
-                </div>
-                <div class="form-group">
-                    <label for="temp-address">Temporary Address:</label>
-                    <input type="text" id="temp-address" name="temp-address">
-                </div>
-                <div class="form-group">
-                    <label for="perm-address">Permanent Address:</label>
-                    <input type="text" id="perm-address" name="perm-address">
-                </div>
-                <div class="form-group">
-                    <label for="father-name">Father's Name:</label>
-                    <input type="text" id="father-name" name="father-name">
-                </div>
-                <div class="form-group">
-                    <label for="mother-name">Mother's Name:</label>
-                    <input type="text" id="mother-name" name="mother-name">
-                </div>
-                <div class="form-group">
-                    <label for="guardian-name">Guardian's Name:</label>
-                    <input type="text" id="guardian-name" name="guardian-name">
-                </div>
-                <div class="form-group">
-                    <label for="guardian-number">Guardian's Contact Number:</label>
-                    <input type="tel" id="guardian-number" name="guardian-number">
-                </div>
-                <div class="form-group">
-                    <label for="id-number">ID Number:</label>
-                    <input type="text" id="id-number" name="id-number">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" value="<?php echo $password; ?>">
                 </div>
                 <div class="form-group">
                     <label for="age">Age:</label>
-                    <input type="number" id="age" name="age">
+                    <input type="number" id="age" name="age" value="<?php echo $age; ?>">
                 </div>
                 <div class="form-group">
-                    <label for="occupation">Occupation:</label>
-                    <input type="text" id="occupation" name="occupation">
+                    <label for="contact_number">Contact Number:</label>
+                    <input type="tel" id="contact_number" name="contact_number" value="<?php echo $contact_number; ?>">
                 </div>
                 <div class="form-group">
-                    <label for="room-type">Room Type:</label>
-                    <select id="room-type" name="room-type">
-                        <option value="single">Single</option>
-                        <option value="double">Double</option>
-                        <option value="triple">Triple</option>
-                    </select>
+                    <label for="citizenship_front">Citizenship Front:</label>
+                    <input type="file" id="citizenship_front" name="citizenship_front" accept="image/*">
+                    <?php if (!empty($citizenship_front)) {
+                        echo '<img src="' . $citizenship_front . '" alt="Citizenship Front">';
+                    } ?>
                 </div>
                 <div class="form-group">
-                    <label for="food-type">Food Type:</label>
-                    <select id="food-type" name="food-type">
-                        <option value="vegetarian">Vegetarian</option>
-                        <option value="non-vegetarian">Non-Vegetarian</option>
-                    </select>
+                    <label for="citizenship_back">Citizenship Back:</label>
+                    <input type="file" id="citizenship_back" name="citizenship_back" accept="image/*">
+                    <?php if (!empty($citizenship_back)) {
+                        echo '<img src="' . $citizenship_back . '" alt="Citizenship Back">';
+                    } ?>
                 </div>
+                <div class="form-group">
+                    <label for="guardian_name">Guardian's Name:</label>
+                    <input type="text" id="guardian_name" name="guardian_name" value="<?php echo $guardian_name; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="guardian_contact_number">Guardian's Contact Number:</label>
+                    <input type="tel" id="guardian_contact_number" name="guardian_contact_number" value="<?php echo $guardian_contact_number; ?>" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <textarea id="address" name="address"><?php echo $address; ?></textarea>
+                </div>
+                <!-- Add other input fields as needed -->
                 <button type="submit" class="submit-button">Save Changes</button>
-            </div>
+            </form>
         </div>
-        <div class="info-box-container">
-            <div class="info-box">
-                <h2>Booking History</h2>
-                <p>Total Bookings: 10</p>
-            </div>
-            <div class="info-box">
-                <h2>Current Bookings</h2>
-                <p>Number of Current Bookings: 2</p>
-            </div>
-            <div class="info-box">
-                <h2>Payment History</h2>
-                <p>Total Payments: $1000</p>
-            </div>
-        </div>
-    </div>
-    <div class="admin-profile">
-        <img src="Residents.jpg" alt="Admin Profile">
-        <p>RESIDENT</p>
     </div>
 </body>
 </html>
-
