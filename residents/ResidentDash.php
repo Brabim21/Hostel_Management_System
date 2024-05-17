@@ -89,11 +89,9 @@ mysqli_close($link);
             </a>
         </li>
         <li><a href="profile.php">Profile</a></li>
-        <li><a href="#">Book Facilities</a></li>
         <li><a href="PaymentResident.html">My Payments</a></li>
         <li><a href="MainteneceRequest.html">Maintenance Requests</a></li>
-        <li><a href="#">Notifications</a></li>
-        <li><a href="chat.html">Chats</a></li> <!-- Redirect to chat.html -->
+        <li><a href="chat.html">Chats</a></li>
         <li><a href="logout.php?logout=true">Logout</a></li>
 
     </ul>
@@ -138,10 +136,7 @@ mysqli_close($link);
 
     <div class="separator-bar"></div> <!-- Separating bar -->
 
-    <!-- Message box -->
    
-
-    <!-- Your content goes here -->
 </div>
 
 <div class="resident-profile">
