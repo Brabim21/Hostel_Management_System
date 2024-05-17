@@ -10,7 +10,7 @@ $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 # Check connection
 if (!$link) {
-  die("Connection failed: " . mysqli_connect_error());
+    die("Connection failed: " . mysqli_connect_error());
 }
 
 # Set character set
@@ -80,29 +80,87 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <title>Hostel Management System - Login</title>
-  <link rel="stylesheet" href="ResidentLogin.css">
+    <title>Hostel Management System - Login</title>
+    <link rel="stylesheet" href="ResidentLogin.css">
+    <style>
+        /* Styles for the toast message */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+        .toast.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+        @-webkit-keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <img src="Hostel.jpg" alt="Hostel Image" class="background-image">
-    <h1>Hostel Management System</h1>
+    <div class="container">
+        <img src="Hostel.jpg" alt="Hostel Image" class="background-image">
+        <h1>Hostel Management System</h1>
 
-    <h2>Login</h2>
-    <form id="login-form" action="login_process.php" method="post">
-      <label for="email">Email/Registration Number:</label>
-      <input type="text" id="email" name="email" placeholder="Your email or registration number">
+        <h2>Login</h2>
+        <form id="login-form" action="login_process.php" method="post">
+            <label for="email">Email/Registration Number:</label>
+            <input type="text" id="email" name="email" placeholder="Your email or registration number">
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" placeholder="Your password">
-      <span class="error"><?php echo isset($password_err) ? $password_err : ""; ?></span>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Your password">
+            <span class="error"><?php echo isset($password_err) ? $password_err : ""; ?></span>
 
+            <input type="submit" name="login" value="Login">
+        </form>
+        <a href="ResidentSignup.php">New User</a> <!-- Link to sign-up page -->
+        <a href="forgotpassword.php">Forgot password?</a>
+    </div>
 
-      <input type="submit" name="login" value="Login">
-    </form>
-    <a href="ResidentSignup.php">New User</a> <!-- Link to sign-up page -->
-    <a href="#">Forgot password?</a>
-  </div>
+    <?php if(isset($_SESSION['logout_message'])) { ?>
+        <!-- Toast message -->
+        <div id="toast" class="toast">
+            <?php echo $_SESSION['logout_message']; ?>
+        </div>
+        <?php unset($_SESSION['logout_message']); ?>
+    <?php } ?>
+
+    <script>
+        // Show the toast message
+        document.addEventListener('DOMContentLoaded', function() {
+            var toast = document.getElementById('toast');
+            if (toast) {
+                toast.classList.add('show');
+                setTimeout(function(){
+                    toast.classList.remove('show');
+                }, 3000); // 3 seconds
+            }
+        });
+    </script>
 </body>
 </html>
