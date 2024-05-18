@@ -166,6 +166,7 @@ $result = mysqli_query($link, $query);
     <div class="add-user">
     <h2>Add User</h2>
     <form id="addUserForm" method="post" enctype="multipart/form-data">
+
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -175,6 +176,7 @@ $result = mysqli_query($link, $query);
             <input type="email" id="email" name="email" required>
         </div>
 
+
         <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
@@ -183,10 +185,13 @@ $result = mysqli_query($link, $query);
             <label for="age">Age:</label>
             <input type="number" id="age" name="age" required>
         </div>
+
+        
         <div class="form-group">
             <label for="contactNumber">Contact Number:</label>
             <input type="text" id="contactNumber" name="contactNumber" required>
         </div>
+
         <div class="form-group">
             <label for="citizenship">Citizenship Front:</label>
             <input type="file" id="citizenship" name="citizenship" accept="image/*" required>
@@ -195,6 +200,8 @@ $result = mysqli_query($link, $query);
             <label for="citizenship-back">Citizenship Back:</label>
             <input type="file" id="citizenship-back" name="citizenshipBack" accept="image/*" required>
         </div>
+
+
         <div class="form-group">
             <label for="guardianName">Guardian Name:</label>
             <input type="text" id="guardianName" name="guardianName" required>
@@ -203,6 +210,8 @@ $result = mysqli_query($link, $query);
             <label for="guardianContactNumber">Guardian Contact Number:</label>
             <input type="text" id="guardianContactNumber" name="guardianContactNumber" required>
         </div>
+
+
         <div class="form-group">
             <label for="address">Address:</label>
             <input type="text" id="address" name="address" required>
@@ -215,10 +224,92 @@ $result = mysqli_query($link, $query);
             </select>
         </div>
 
+
         <button type="submit">Add User</button>
     </form>
 </div>
 
+<style>
+    .add-user {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-left: 450px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.add-user h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group input[type="file"] {
+    padding: 3px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.row-1{
+
+    display: flex;
+    gap: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 600px) {
+    .add-user {
+        padding: 15px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        padding: 8px;
+    }
+    
+    button[type="submit"] {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+</style>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
