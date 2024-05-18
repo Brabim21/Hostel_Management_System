@@ -44,11 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_query($link, $insertSql)) {
         // Insert successful
         echo "Staff added successfully.";
+
     } else {
         // Insert failed
         echo "Error: " . $insertSql . "<br>" . mysqli_error($link);
     }
-
+header("Location: manageStaff.php");
     // Close the database connection
     mysqli_close($link);
 }
