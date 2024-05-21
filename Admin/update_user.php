@@ -30,6 +30,97 @@ $room_result = mysqli_query($link, $room_query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update User</title>
+
+    <style>
+        /* General reset and styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.update-user-overlay {
+    margin-top: 450px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.update-user-overlay h2 {
+    margin-top: 0;
+    color: #333333;
+    font-size: 24px;
+    text-align: center;
+}
+
+.update-user-overlay form {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-user-overlay label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555555;
+}
+
+.update-user-overlay input[type="text"],
+.update-user-overlay input[type="number"],
+.update-user-overlay select {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: calc(100% - 22px); /* Adjusting for padding and border */
+    box-sizing: border-box;
+}
+
+.update-user-overlay input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.update-user-overlay input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .update-user-overlay {
+        padding: 15px;
+    }
+
+    .update-user-overlay h2 {
+        font-size: 20px;
+    }
+
+    .update-user-overlay input[type="text"],
+    .update-user-overlay input[type="number"],
+    .update-user-overlay select {
+        font-size: 14px;
+    }
+
+    .update-user-overlay input[type="submit"] {
+        font-size: 14px;
+    }
+}
+
+    </style>
 </head>
 <body>
     <div class="update-user-overlay">
