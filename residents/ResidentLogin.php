@@ -128,6 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1>Hostel Management System</h1>
 
         <h2>Login</h2>
+        <div class="login-container">
         <form id="login-form" action="login_process.php" method="post">
             <label for="email">Email/Registration Number:</label>
             <input type="text" id="email" name="email" placeholder="Your email or registration number">
@@ -136,10 +137,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="password" id="password" name="password" placeholder="Your password">
             <span class="error"><?php echo isset($password_err) ? $password_err : ""; ?></span>
 
-            <input type="submit" name="login" value="Login">
+            <input type="submit" name="login" value="Login" id="submit-button-resident">
         </form>
-        <a href="ResidentSignup.php">New User</a> <!-- Link to sign-up page -->
-        <a href="forgotpassword.php">Forgot password?</a>
+        <div class="auth-links">
+            <a href="ResidentSignup.php" class="button orange-button">New User</a>
+            <a href="forgotpassword.php" class="button orange-button">Forgot password?</a>
+        </div>
+        </div>
     </div>
 
     <?php if(isset($_SESSION['logout_message'])) { ?>
