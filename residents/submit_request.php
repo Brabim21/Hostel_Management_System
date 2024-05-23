@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $sql . "<br>" . mysqli_error($link);
     }
     
+    
     // Close the database connection
     mysqli_close($link);
 }
