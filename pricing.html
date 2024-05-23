@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Hostel Stays</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 40px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #ff7f50;
+            color: #333;
+            border-radius: 5px;
+        }
+
+        .pricing {
+            padding: 2rem;
+            text-align: left;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 2rem;
+            border-radius: 10px;
+        }
+
+        .pricing h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .room {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fafafa;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .room:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .room img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            margin-right: 1.5rem;
+        }
+
+        .room-details {
+            flex-grow: 1;
+        }
+
+        .room-details p {
+            font-size: 1.2rem;
+            color: #666;
+            margin: 0.5rem 0;
+        }
+
+        .room-details .btn {
+            background: #ff7f50;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="pricing">
+        <h2>Our Pricing</h2>
+        <div class="room">
+            <img src="images/Hostelroom.jpg" alt="Hostel Room">
+            <div class="room-details">
+                <p>Single Bed: $30/night</p>
+                <p>Double Bed: $50/night</p>
+                <p>Rating: 4.5/5</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+        </div>
+        <div class="room">
+            <img src="images/room2.jpeg" alt="Hostel Room">
+            <div class="room-details">
+                <p>Single Bed: $35/night</p>
+                <p>Double Bed: $55/night</p>
+                <p>Rating: 4.7/5</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+        </div>
+        <div class="room">
+            <img src="images/room3.jpg" alt="Hostel Room">
+            <div class="room-details">
+                <p>Single Bed: $40/night</p>
+                <p>Double Bed: $60/night</p>
+                <p>Rating: 4.8/5</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Hostel Stays. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
