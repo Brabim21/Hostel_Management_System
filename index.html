@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Stays - Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 40px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #ff7f50;
+            color: #333;
+            border-radius: 5px;
+        }
+
+        .intro {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 0;
+            background: url('images/mainhostel.webp') no-repeat center center/cover;
+            color: #fff;
+            position: relative;
+            height: 100vh; /* Ensure the intro section takes full viewport height */
+            margin: 0; /* Remove any margin */
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .intro h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            z-index: 1;
+        }
+
+        .intro h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            z-index: 1;
+        }
+
+        .intro .btn {
+            background: #ff7f50;
+            color: #fff;
+            padding: 0.5rem 2rem;
+            border-radius: 50px; /* Rounded border */
+            text-decoration: none;
+            font-size: 1rem;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .popup {
+            display: none; /* Hide popup by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 80%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        .popup .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff7f50;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 0 10px;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .popup h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .user-container {
+            display: flex;
+            justify-content: space-around; /* Arrange boxes horizontally with equal space around */
+            padding: 20px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .user-box {
+            text-align: center;
+            cursor: pointer;
+            padding: 20px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin: 10px;
+            background-color: #f0f0f0; /* Soft background color */
+            flex: 1 1 calc(33.333% - 40px); /* Ensure three boxes per row */
+            max-width: calc(33.333% - 40px); /* Ensure three boxes per row */
+            box-sizing: border-box;
+        }
+
+        .user-box:hover {
+            background-color: #e0e0e0; /* Slightly darker on hover */
+            transform: translateY(-5px); /* Slight lift effect on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+        }
+
+        .user-box img {
+            width: 100px;
+            height: 100px; /* Ensure consistent image size */
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover; /* Ensure image covers the area */
+        }
+
+        .user-name {
+            font-size: 18px;
+            color: #333; /* Consistent color */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="intro">
+        <div class="overlay"></div>
+        <h1>Hostel Stays</h1>
+        <h2>Your Comfort, Our Priority</h2>
+        <a href="#" class="btn" onclick="openPopup()">Get Started</a>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Hostel Stays. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="popup" id="popup">
+        <button class="close-btn" onclick="closePopup()">×</button>
+        <div class="container">
+            <h2>Select your respective role</h2>
+            <div class="user-container">
+                <div class="user-box" id="residentSection">
+                    <img src="images/Residents.jpg" alt="Resident">
+                    <div class="user-name">Resident</div>
+                </div>
+                <div class="user-box" id="adminSection">
+                    <img src="images/admin.jpg" alt="Admin">
+                    <div class="user-name">Admin</div>
+                </div>
+                <div class="user-box" id="staffSection">
+                    <img src="images/staff.jpg" alt="Staff">
+                    <div class="user-name">Staff</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
