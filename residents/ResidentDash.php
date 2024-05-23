@@ -1,6 +1,11 @@
 <?php
 include 'configuration.php';
 
+// Enable error reporting
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Check if user is logged in
 session_start();
 if (!isset($_SESSION['email'])) {
@@ -10,7 +15,7 @@ if (!isset($_SESSION['email'])) {
 
 // Fetch assigned room ID from database
 $email = $_SESSION['email'];
-$sqlAssignedRoom = "SELECT assigned_room_id FROM user WHERE email = ?";
+$sqlAssignedRoom = "SELECT assigned_room_name FROM user WHERE email = ?";
 $stmtAssignedRoom = mysqli_prepare($link, $sqlAssignedRoom);
 mysqli_stmt_bind_param($stmtAssignedRoom, "s", $email);
 mysqli_stmt_execute($stmtAssignedRoom);
@@ -27,12 +32,15 @@ mysqli_stmt_bind_result($stmt_pending, $pendingAmount);
 mysqli_stmt_fetch($stmt_pending);
 mysqli_stmt_close($stmt_pending);
 
+// Fetch current user ID from database
+$user_id = getUserIdByEmail($email, $link);
+
 // Process sending message
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send_message"])) {
     $message = $_POST["message"];
 
     // Insert message into database with assigned_room_id
-    $sender_id = getUserIdByEmail($email, $link);
+    $sender_id = $user_id;
     $receiver_id = getHostelAdminId($link);
     $assigned_room_id = $assignedRoomId; // Use the assigned_room_id
     $sql_insert_message = "INSERT INTO message (sender_id, receiver_id, room_id, message_text) VALUES (?, ?, ?, ?)";
@@ -91,9 +99,8 @@ mysqli_close($link);
         <li><a href="profile.php">Profile</a></li>
         <li><a href="PaymentResident.html">My Payments</a></li>
         <li><a href="MainteneceRequest.html">Maintenance Requests</a></li>
-        <li><a href="chat.html">Chats</a></li>
+        <li><a href="user_chat.php?user_id=<?php echo $user_id; ?>">Chats</a></li>
         <li><a href="logout.php?logout=true">Logout</a></li>
-
     </ul>
 </nav>
 
@@ -105,7 +112,7 @@ mysqli_close($link);
         <div class="info-box">
             <h2>Booking Status</h2>
             <?php if ($assignedRoomId !== null) { ?>
-                <p>Your assigned room ID is: <?php echo $assignedRoomId; ?></p>
+                <p>Your assigned room is: <?php echo $assignedRoomId; ?></p>
             <?php } else { ?>
                 <p>No room assigned.</p>
             <?php } ?>
@@ -146,4 +153,3 @@ mysqli_close($link);
 
 </body>
 </html>
-
