@@ -188,7 +188,7 @@ $conn->close();
                             <td><?php echo htmlspecialchars($user['guardian_name']); ?></td>
                             <td><?php echo htmlspecialchars($user['guardian_contact_number']); ?></td>
                             <td><?php echo htmlspecialchars($user['address']); ?></td>
-                            <td><?php echo htmlspecialchars($user['assigned_room_id']); ?></td>
+                            <td><?php echo htmlspecialchars($user['assigned_room_name']); ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
