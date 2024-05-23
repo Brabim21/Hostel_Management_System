@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -15,15 +16,22 @@ nav {
     padding-top: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start; /* Align items to the start */
+    align-items: flex-start; /* Align items to the left */
+    padding-left: 20px; /* Add padding to the left for spacing */
+}
+
+nav .logo {
+    width: 100px; /* Adjust as needed */
+    margin-bottom: 20px; /* Spacing between logo and links */
+    transition: transform 0.3s; /* Transition effect */
 }
 
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    text-align: left;
+    width: 100%; /* Ensure the ul takes the full width */
 }
 
 nav ul li {
@@ -35,121 +43,140 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 10px 0; /* Adjust padding */
     transition: background-color 0.3s;
+    text-align: left; /* Ensure the text is aligned to the left */
+    padding-left: 10px; /* Add padding-left for indentation */
 }
 
 nav ul li a:hover {
     background-color: #555;
 }
 
-nav ul li a:hover .logo {
-    transform: scale(1.1); /* Example hover effect */
-}
+    .small-table {
+        margin-left: 240px; /* Add left margin */
+        font-size: 14px; /* Adjust the font size */
+    }
 
-.logo {
-    width: 100px; /* Adjust as needed */
-    margin-bottom: 20px; /* Spacing between logo and links */
-    transition: transform 0.3s; /* Transition effect */
-}
+    .small-table th,
+    .small-table td {
+        border: 2px solid #dddddd;
+        text-align: left;
+        padding: 8px; /* Adjust the padding */
+    }
 
-.content {
-    margin-left: 220px; /* Adjust based on nav width */
-    padding: 20px;
-    text-align: center;
-}
+    .small-table th {
+        background-color: #f2f2f2;
+        font-size: 16px; /* Increase font size for table headers */
+    }
 
-.admin-profile {
-    position: fixed;
-    top: 10px;
-    right: 20px;
-    text-align: center;
-    color: #333;
-}
+    .add-resident-btn {
+        margin-left: 240px;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #555;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
-.admin-profile img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #fff;
-}
+    .add-resident-btn:hover {
+        background-color: #0056b3;
+    }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
+    /* Modal Styles */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+    }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
+    .modal-content {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin: auto; /* Center the modal content */
+    }
 
-th {
-    background-color: #f2f2f2;
-}
+    .modal-content h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+    }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
+    .modal-content form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
 
-tr:hover {
-    background-color: #ddd;
-}
+    .modal-content label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+    }
 
-/* Add staff */
+    .modal-content input[type="text"],
+    .modal-content input[type="email"],
+    .modal-content input[type="password"],
+    .modal-content input[type="number"],
+    .modal-content input[type="file"],
+    .modal-content select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
 
-.add-staff {
-    margin-top: 20px;
-}
+    .modal-content button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        background-color: #555;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
-.add-staff h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
+    .modal-content button:hover {
+        background-color: #0056b3;
+    }
 
-.add-staff form {
-    max-width: 400px;
-    margin: 0 auto;
-}
+    .modal-content button:focus {
+        outline: none;
+    }
 
-.add-staff label {
-    display: block;
-    margin-bottom: 5px;
-}
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
 
-.add-staff input[type="text"],
-.add-staff input[type="email"],
-.add-staff input[type="password"],
-.add-staff input[type="number"],
-.add-staff input[type="file"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.add-staff button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.add-staff button:hover {
-    background-color: #0056b3;
-}
-
-.add-staff button:focus {
-    outline: none;
-}
-
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+    }
+ 
