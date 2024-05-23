@@ -127,18 +127,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Fix leaking faucet</td>
-                    <td>Pending</td>
-                </tr>
-                <tr>
-                    <td>Repair broken window</td>
-                    <td>Completed</td>
-                </tr>
-                <tr>
-                    <td>Paint walls</td>
-                    <td>Current</td>
-                </tr>
+                <?php
+                // Include database connection and setup
+                include_once "../configuration.php";
+
+                // Query to fetch maintenance activities
+                $query = "SELECT * FROM maintenancerequests";
+                $result = mysqli_query($link, $query);
+
+                // Check if there are any results
+                if (mysqli_num_rows($result) > 0) {
+                    // Loop through each row and display data in table
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>" . $row['description'] . "</td>";
+                        echo "<td>" . ($row['preferred_date'] == '0000-00-00' ? 'Pending' : 'Completed') . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='2'>No maintenance activities found.</td></tr>";
+                }
+                ?>
             </tbody>
         </table>
     </div>
