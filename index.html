@@ -233,6 +233,20 @@
         function closePopup() {
             document.getElementById('popup').style.display = 'none';
         }
+
+
+        document.getElementById('residentSection').addEventListener('click', function () {
+            window.location.href = "residents/ResidentLogin.php";
+        });
+
+        document.getElementById('adminSection').addEventListener('click', function () {
+            window.location.href = "Admin/adminLogin.php";
+        });
+
+        document.getElementById('staffSection').addEventListener('click', function () {
+            window.location.href = "staff/staffLogin.php";
+        });
+
     </script>
 </body>
 </html>
